@@ -1,0 +1,99 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "Esercizio 1 Esame 2021/09/15"
+  description: "API per la gestione di un inventario di un negozio"
+paths:
+  /negozio/racchette/:
+    get:
+      operationId: getRacketsByMaterial
+      description: "Get delle racchetta di un certo materiale"
+      parameters:
+        - name: materiale
+          required: true
+          in: query
+          type: string
+          enum:
+            - "Carbonio"
+            - "Grafite"
+            - "Fibra di vetro"
+            - "Titanio"
+      responses:
+        '200':
+          description: "Success individuate racchette del materiale richiesto"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Racchetta"            
+        '400':
+          description: "Failed nessuna racchetta del materiale richiesto individuata"
+  /negozio/materiali/:
+    post:
+      operationId: addMaterial
+      description: "Add di un nuovo materiale"
+      parameters:
+        - name: materiale
+          required: true
+          in: body
+          schema: 
+            type: object
+            $ref: "#/definitions/Materiale"
+      responses:
+        '200':  
+          description: "Success materiale aggiunto"
+          schema:
+            type: object
+            $ref: "#/definitions/Materiale"
+        '400':
+          description: "Failed materiale non aggiunto al catalogo"
+  /negozio/racchette/{codiceRacchetta}/:
+    delete:
+      operationId: deleteRackectById
+      description: "Delete di una racchetta specificata"
+      parameters:
+        - name: codiceRacchetta
+          required: true
+          in: path
+          type: integer
+          format: int32
+      responses:
+        '200':  
+          description: "Success racchetta eliminata"
+        '400':
+          description: "Failed racchetta non eliminata"
+definitions:
+  Racchetta:
+    type: object
+    required:
+      - codice
+      - prezzo
+      - materiale
+    properties:
+      codice:
+        type: string
+        example: 001
+      prezzo:
+        type: integer
+        format: int32
+        example: 100
+      materiale:
+        type: string
+        enum:
+          - "Carbonio"
+          - "Grafite"
+          - "Fibra di vetro"
+          - "Titanio"
+        example: "Carbonio"
+  Materiale:
+    type: object
+    required: 
+      - descrizione
+      - peso
+    properties:
+      descrizione:
+        type: string
+        example: "PVC"
+      peso:
+        type: integer
+        format: int32
+        example: 1

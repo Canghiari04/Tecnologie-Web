@@ -1,0 +1,133 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "API per la gestione di un sistema di messaggistica"
+paths:
+  /sistema/sessioni/{idSessione}/messaggi/:
+    get:
+      operationId: getMessagesByScore
+      description: "Get di tutti i messaggi di una sessione aventi un certo score"
+      parameters:
+        - name: idSessione
+          required: true
+          in: path 
+          type: integer
+          format: int32
+        - name: scoreMessaggio
+          required: true
+          in: query
+          type: integer
+          enum: 
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+      responses:
+        '200':
+          description: "Success messaggi con un certo score individuati nella sessione"
+          schema:
+            type: array
+            items: 
+              $ref: "#/definitions/Messaggio"
+        '400':
+          description: "Failed nessun messaggio inviduato nella sessione"
+  /sistema/sessioni/{idSessione}/:
+    post: 
+      operationId: addMessage
+      description: "Add di un nuovo messaggio ad una sessione"
+      parameters:
+        - name: idSessione
+          required: true
+          in: path 
+          type: integer
+          format: int32
+        - name: messaggio
+          required: true
+          in: body
+          schema:
+            type: object
+            $ref: "#/definitions/Messaggio"
+      responses:
+        '200':
+          description: "Success messaggio aggiunto alla sessione"
+          schema:
+            type: object
+            $ref: "#/definitions/Messaggio"
+        '400':
+          description: "Failed messaggio non aggiunato alla sessione"
+  /sistema/sessioni/{idSessione}/messaggi/{idMessaggio}:
+    put: 
+      operationId: updateMessageScore
+      description: "Update dello score di un messaggio"
+      parameters:
+        - name: idSessione
+          required: true
+          in: path 
+          type: integer
+          format: int32
+        - name: idMessaggio
+          required: true
+          in: path 
+          type: integer
+          format: int32
+        - name: score
+          required: true
+          in: body
+          schema:
+            type: integer
+            enum: 
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+      responses:
+        '200':
+          description: "Success score del messaggio aggiornato"
+        '400':
+          description: "Failed score del messaggio non aggiornato"
+definitions:
+  Sessione:
+    type: object
+    required: 
+      - idSessione
+      - dataSessione
+      - listaMessaggi
+    properties:
+      idSessione:
+        type: integer
+        format: int32
+        example: 001
+      dataSessione:
+        type: string
+        format: date
+        example: "01/02/2021"
+      listaMessaggi:
+        type: array
+        items:
+          $ref: "#/definitions/Messaggio"
+  Messaggio:
+    type: object
+    required: 
+      - idMessaggio
+      - testo
+      - score
+    properties:
+      idMessaggio:
+        type: integer
+        format: int32
+        example: 007
+      testo:
+       type: string
+       example: "Ciao, come stai?"
+      score:
+        type: integer
+        enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+        example: 5
+    

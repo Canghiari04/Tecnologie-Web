@@ -1,0 +1,110 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    padding-left: 1rem;     
+    overflow-x: hidden;
+}
+
+body>div {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+body>div>header {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 0.25rem;
+    top: 0;
+    left: 0;
+    background-color: grey;
+}
+
+body>div>header>img {
+    width: 50px;
+    height: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+body>div>header>p {
+    margin-left: 0.5rem;
+    color: white;
+}
+
+h1 {
+    margin-top: 5rem;
+}
+
+body>div>div {
+    width: 100%;
+    height: auto;
+    border-top: 2px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+body>div>div>div:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: auto;
+}
+
+body>div>div>div:nth-child(1)>div {
+    border-bottom: 2px solid lightgrey;
+}
+
+body>div>div>div:nth-child(1)>div>p:nth-child(1) {
+    color: grey;
+}
+
+body>div>div>div:nth-child(1)>div>p:nth-child(2) {
+    width: 75%;
+    font-size: 14pt;
+    font-weight: bold;
+    color: blue;
+}
+
+body>div>div>div:nth-child(2) {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    grid-column: 3 / span 3;
+    grid-row: auto;
+    border-left: 2px solid lightgrey;
+}
+
+a {
+    text-decoration: none !important;
+    color: darkgrey;
+}
+
+body>div>div>div:nth-child(2)>div {
+    width: 65%;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 0.75rem;
+    background-color: lightblue;
+    border: 2px solid lightskyblue;
+}
+
+body>div>div>div:nth-child(2)>a>div {
+    width: 65%;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 0.75rem;
+    background-color: lightblue;
+    border: 2px solid lightskyblue;
+}
+
+h2 {
+    text-w;
+    color: blue;
+}

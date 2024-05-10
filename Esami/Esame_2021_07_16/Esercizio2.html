@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" text="text/css" href="Esercizio2.css">
+        <script src="Esercizio3.js"></script>
+    </head>
+    <body>
+        <div role="container">
+            <div role="div-search">
+                <h1>Search filters</h1>
+                <label>
+                    Playing position:
+                    <select name="role-player" on_click="getPlayers()">
+                        <option>goalkeeper</option>
+                        <option>defender</option>
+                        <option>midfield</option>
+                        <option selected>forward</option>
+                    </select>
+                </label>
+                <div role="div-players">
+                    <div on_click="getPlayer()">
+                        <p role="name-player">
+                            Gianluigi Donnarumma
+                        </p>
+                        <p role="description-player">
+                            Ciao ciao ciao
+                        </p>
+                    </div>
+                    <div on_click="getPlayer()">
+                        <p role="name-player">
+                            Manuel Neuer
+                        </p>
+                        <p role="description-player">
+                            Manuel Peter Neuer is a German goalkeeper ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div role="div-player">
+                <h1>Gianluigi Donnarumma</h1>
+                <p>Gianluigi is an italian professional footballer who plays as a goalkeeper for grench Ligue 1 side Paris Saint Germain and the Italy national team. Although only 22 years old, Gianluigi has already amessed over 200 appearances for club and country. He began his career with AC Milan in 20215, becoming ... </p>
+                <div>
+                    <img src="http://diiorio.nws.cs.unibo.it/twe/resources/1507a/gigio1.jpg">
+                    <img src="http://diiorio.nws.cs.unibo.it/twe/resources/1507a/gigio2.jpg">
+                    <img src="http://diiorio.nws.cs.unibo.it/twe/resources/1507a/gigio3.jpg">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

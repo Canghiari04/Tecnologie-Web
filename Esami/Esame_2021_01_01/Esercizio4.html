@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body, html {
+                width: 100vw;
+                height: 100vh;
+                padding: 0;
+                margin: 0;
+            }
+
+            #egrid {
+                display: grid;
+                position: relative;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                grid-template-areas:
+                "a1 a1 a2"
+                "a3 a4 a4"
+                "a3 a5 a5";
+                width: 20%;
+                height: auto;
+                padding: 1rem;
+                margin: auto;
+                background-color: orange;
+                gap: 1rem;
+            }
+
+            #egrid>div {
+                text-align: center !important;
+                color: white;
+                background-color: grey;
+                border: 1px solid black;
+            }
+
+            #a1 {
+                grid-area: a1;
+            }
+
+            #a2 {
+                grid-area: a2;
+            }
+
+            #a3 {
+                width: 100%;
+                grid-area: a3;
+            }
+
+            #a4 {
+                grid-area: a4;
+            }
+
+            #a5 {
+                grid-area: a5;
+            }
+
+            #a6 {
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="egrid">
+            <div class="area" id="a1">Area 1</div>
+            <div class="area" id="a2">Area 2</div>
+            <div class="area" id="a3">Area 3</div>
+            <div class="area" id="a4">Area 4</div>
+            <div class="area" id="a5">Area 5</div>
+        </div>
+        <div class="area" id="a6">Area 6</div>
+    </body>
+</html>

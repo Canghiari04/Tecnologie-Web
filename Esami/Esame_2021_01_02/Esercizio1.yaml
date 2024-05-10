@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "API per la gestione di un parco pubblico"
+paths:
+  /parcheggio/automobili/:
+    get:
+      operationId: getCars
+      description: "Get di tutte le automobili del parcheggio"
+      parameters:
+        - name: annoImmatricolazione
+          required: false
+          in: query
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: "Success sono presenti auto nel parcheggio"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Automobile"
+        '400':
+          description: "Failed nessuna auto presente nel parcheggio"
+  /parcheggio/automobili/{targa}/:
+    put:
+      operationId: updateDescription
+      description: "Update della descrizione di un'auto"
+      parameters:   
+        - name: targa
+          required: true
+          in: path
+          type: string
+        - name: descrizione
+          required: true
+          in: body
+          schema:
+            type: string
+            example: "Berlina full optional"
+      responses:
+        '200':
+          description: "Success descrizione aggiornata"
+        '400':
+          description: "Failed descrizione non aggiornata"
+definitions:
+  Automobile:
+    type: object
+    required:
+      - targa
+      - descrizione
+      - annoImmatricolazione
+    properties:
+      targa:
+        type: string
+        example: "CA070HG"
+      descrizione:
+        type: string
+        example: "Berlina super accessoriata"
+      annoImmatricolazione:
+        type: integer
+        format: int32
+        example: 2021 

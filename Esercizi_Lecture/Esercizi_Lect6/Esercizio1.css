@@ -1,0 +1,109 @@
+body, html {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 13pt;
+}
+
+body>div {
+    display: flex;
+    flex: row;
+    width: 75vw;
+    padding: 1rem;
+    margin: auto;
+    margin-top: 2rem;
+    background-color: lightyellow;
+}
+
+body>div>div:first-child {
+    width: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+h2 {
+    color: green;
+}
+
+body>div>div:first-child>p {
+    font-size: 13pt;
+    color: grey;
+}
+
+a {
+    color: fuchsia;
+    text-decoration: underline;
+}
+
+a:hover {
+    width: auto;
+    background-color: yellow;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+}
+
+table>thead>tr>th {
+    padding: 0.25rem;
+    color: white;
+    background-color: black;
+}
+
+table>tbody>tr>td {
+    padding: 0.25rem;
+    border-bottom: 2px solid white;
+}
+
+span {
+    color: grey;
+}
+
+body>div>div:first-child>div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2vh 10vh 2vh;
+    width: 100%;
+    gap: 1rem;
+}
+
+button {
+    float: right;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    margin-top: 1rem;
+    color: white;
+    background-color: green;
+    border: none !important;
+}
+
+body>div>div:nth-child(2) {
+    width: 25%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+    
+body>div>div:nth-child(2)>p {
+    display: flex;
+    flex-direction: column;
+}
+
+body>div>div:nth-child(2)>p>span:nth-child(1) {
+    font-size: 14pt;
+    color: green;
+}
+
+body>div>div:nth-child(2)>p>span:nth-child(2) {
+    color: black;
+    font-style: italic;
+}
+
+body>div>div:nth-child(2)>p>span:nth-child(3) {
+    margin-top: 1rem;
+}
+
+img {
+    width: 75%;
+    height: auto;
+}

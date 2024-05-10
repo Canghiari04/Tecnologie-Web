@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body>div {
+                width: 100%;
+                height: auto;
+            }
+
+            body>div>div {
+                text-align: center;
+                width: 10%;
+                padding: 2rem;
+                border: 2px solid black;
+            }
+
+            table {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            td {
+                background-color: grey;
+            }
+        </style>
+        <script src="Esercizio4.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Weekend o lavorativo?</h1>
+            <div>
+                <table>
+                    <tr>
+                        <th>Weekend</th>
+                        <th>Lavorativo</th>
+                    </tr>
+                    <tr>
+                        <td id="td-holiday-day">0</td>
+                        <td id="td-working-day">0</td>
+                    </tr>
+                </table>
+                <input id="input-date" type="date">
+            </div>
+        </div>
+    </body>
+</html>

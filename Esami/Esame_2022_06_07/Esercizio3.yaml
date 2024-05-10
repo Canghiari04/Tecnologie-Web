@@ -1,0 +1,133 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "API per la gestione di un servizio streaming"
+paths:
+  /serie/:
+    get:
+      description: "Get di tutte le serie TV aventi un certo genere e data di pubblicazione"
+      operationId: getSerieTV
+      parameters:
+        - name: genere
+          required: true
+          in: query
+          type: string
+          enum: 
+            - "Animazione"
+            - "Avventura"
+            - "Commedia"
+            - "Azione"
+            - "Documentario"
+        - name: dataPubblicazione
+          required: true
+          in: query
+          type: string
+          format: date
+      responses:
+        '200':
+          description: "Success serie TV individuate"
+          schema:
+            type: array
+            items: 
+              $ref: "#/definitions/Serie"
+        '400':
+          description: "Failed nessuna serie TV risponde alle richieste"
+  /serie/{idSerie}/:
+    post:
+      description: "Post di un episodio all'interno di una serie TV"
+      operationId: "addEpisodioToSerie"
+      parameters: 
+        - name: idSerie
+          required: true
+          in: path
+          type: integer
+          format: int32
+        - name: episodio
+          required: true
+          in: body
+          schema: 
+            type: object
+            $ref: "#/definitions/Episodio"
+      responses:
+        '200':
+          description: "Success episodio aggiunto alla serie"
+          schema:
+            type: object
+            $ref: "#/definitions/Episodio"
+        '400':  
+          description: "Failed episodio non aggiunto alla serie"
+  /serie/{idSerie}/episodi/{idEpisodio}/:
+    put:
+      description: "Put di un nuovo titolo relativo ad un episodio specifico"
+      operationId: "updateTitoloEpisodio"
+      parameters:
+        - name: idSerie
+          required: true
+          in: path
+          type: integer
+          format: int32
+        - name: idEpisodio
+          required: true
+          in: path
+          type: integer
+          format: int32
+        - name: nuovoTitolo
+          required: true
+          in: body
+          schema:
+            type: string
+            example: "La grande sconfitta"
+      responses:  
+        '200':
+          description: "Success titolo aggiornato"
+          schema:
+            type: object
+            $ref: "#/definitions/Episodio"
+        '400':
+          description: "Failed titolo non aggiornato"
+definitions:
+  Serie:
+    type: object
+    required:
+      - IdSerie
+      - titoloSerie
+      - dataPubblicazione
+      - episodi
+      - genere
+    properties:
+      idSerie:
+        type: integer
+        format: int32
+        example: 7
+      titoloSerie:
+        type: string
+        example: "La nascita di una leggenda"
+      dataPubblicazione:
+        type: string
+        format: date
+        example: "16/03/2020"
+      episodi:
+        type: array
+        items:
+          $ref: "#/definitions/Episodio"
+      genere:
+        type: string
+        enum:
+          - "Animazione"
+          - "Avventura"
+          - "Commedia"
+          - "Azione"
+          - "Documentario"
+        example: "Documentario"          
+  Episodio:
+    type: object
+    required: 
+      - numeroEpisodio
+      - titoloEpisodio
+    properties:
+      numeroEpisodio:
+        type: integer
+        example: 27
+      titoloEpisodio:
+        type: string
+        example: "La grande vittoria"

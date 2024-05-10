@@ -1,0 +1,92 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "menu article1 article1 article2 article3"
+    "menu article1 article1 article4 article5";
+    width: 100vw;
+    height: auto;
+    padding-left: 1rem;
+    gap: 1rem;
+}
+
+#div-menu {
+    width: 100%;
+    height: 100%;
+    grid-area: menu;
+}
+
+#div-menu>div {
+    padding: 1rem;
+    margin-top: 0.5rem;
+    background-color: rgb(57, 143, 44, 0.1);
+}
+
+#div-menu>div:hover {
+    color: white;
+    text-decoration: underline;
+    background-color: rgb(57, 143, 44);
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#div-article-1 {
+    display: flex;
+    flex-direction: column;
+    grid-area: article1;
+    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/cetrioli.jpg);
+    background-size: cover;
+}
+
+#div-article-2 {
+    grid-area: article2;
+    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/rasaerba.jpg);
+    background-size: cover;
+}
+
+#div-article-3 {
+    grid-area: article3;
+    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/decespugliatore.jpg);
+    background-size: cover;
+}
+
+#div-article-4 {
+    grid-area: article4;
+    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/casetta.jpg);
+    background-size: cover;
+}
+
+#div-article-5 {
+    grid-area: article5;
+    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/asparagi.jpg);
+    background-size: cover;
+}
+
+p {
+    padding: 1rem;
+    margin: 0;
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+#span-article-1 {
+    color: black;
+    font-weight: bold;
+    font-size: 30pt;
+}
+
+#span-article-2, #span-article-3, #span-article-4, #span-article-5 {
+    color: black;
+    font-weight: bold;
+    font-size: 20pt;
+}

@@ -1,0 +1,111 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75vw;
+    height: auto;
+    margin: auto;
+    padding-bottom: 2rem;
+    gap: 2.5rem;
+    background-color: lightyellow;
+}
+
+body>div>div:nth-child(1) {
+    width: 50%;
+    height: auto;
+}
+
+h1, h4 {
+    color: green;
+}
+
+body>div>div:nth-child(1)>p {
+    color: grey;
+}
+
+body>div>div:nth-child(1)>a {
+    color: fuchsia;
+    text-decoration: underline;
+}
+
+body>div>div:nth-child(1)>table {
+    text-align: left;
+    width: 100%;
+}
+
+th {
+    padding: 0.25rem;
+    color: white;
+    background-color: black;
+    border: none !important;
+}
+
+td {
+    padding: 0.25rem;
+    border-bottom: 2px solid white;
+}
+
+body>div>div>div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+body>div>div:nth-child(1)>div>div>label {
+    color: grey;
+}
+
+input, textarea, select {
+    width: auto;
+}
+
+button {
+    float: right;
+    width: 75px;
+    padding: 0.5rem;
+    font-size: 12pt;
+    color: white;
+    background-color: green;
+    border: none !important;
+}
+
+body>div>div:nth-child(2) {
+    width: 25%;
+    height: auto;
+}
+
+body>div>div:nth-child(2)>p {
+    display: flex;
+    flex-direction: column;
+}
+
+body>div>div:nth-child(2)>p>span:nth-child(1) {
+    font-size: 14pt;
+    color: green;
+}
+
+body>div>div:nth-child(2)>p>span:nth-child(2) {
+    font-style: italic;
+}
+
+body>div>div:nth-child(2)>p>span:nth-child(3) {
+    margin-top: 2rem;
+    color: grey;
+}
+
+body>div>div:nth-child(2)>p>a {
+    color: fuchsia;
+    text-decoration: underline;
+}
+
+body>div>div:nth-child(2)>img {
+    width: 75%;
+    height: auto;
+}

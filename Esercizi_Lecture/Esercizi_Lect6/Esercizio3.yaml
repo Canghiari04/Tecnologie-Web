@@ -1,0 +1,7 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "API per la gestione di una collezione di serie televisive"
+paths:
+
+definitions:

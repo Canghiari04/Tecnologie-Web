@@ -1,0 +1,72 @@
+html {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    visibility: hidden;
+    position: absolute;
+}
+
+nav {
+    text-align: center;
+    width: 100%;
+    height: auto;   
+    margin-top: 3.5rem;   
+}
+
+nav>a {
+    text-decoration: none !important;
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+}
+
+nav>a:nth-child(2) {
+    background-color: grey;
+    border: 3px solid black;
+}
+
+table {
+    float: right;
+    width: 25%;
+    border: 2px solid black;
+}
+
+th {
+    border-bottom: 1px dashed black;
+}
+
+tr>th>th>td {
+    width: 0vw;
+}
+
+th>td {
+    font-weight: bold;
+    border-bottom: 1px dashed black;
+}
+
+table>thead {
+    font-weight: bold;
+    border-bottom: 1px  black;
+}
+
+tr:nth-of-type(2) {
+    font-weight: bold;
+    font-style: italic;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    color: grey;
+}

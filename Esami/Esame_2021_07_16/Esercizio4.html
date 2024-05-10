@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="Esercizio4.js"></script> 
+        <style>
+            #container {
+                width: 275px;
+                text-align: center;
+            }
+
+            #div-semaphore {
+                position: relative;
+                width: 275px;
+                height: auto;
+                border: 2px solid black;
+            }   
+
+            .circle {
+                width: 250px;
+                height: 250px;
+                margin: auto;
+                border-radius: 125px;
+                border: 2px solid black;
+                background-color: white;
+            }
+
+            button {
+                width: auto;
+                height: auto;
+                margin: auto;
+                margin-top: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="div-semaphore">
+                <div id="circle1" class="circle"></div>
+                <div id="circle2" class="circle"></div>
+                <div id="circle3" class="circle"></div>
+            </div>
+            <button id='myButton' onclick="getColor()">Clicca qui</button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://diiorio.nws.cs.unibo.it/twe/lib/jquery-3.6.0-dist/jquery-3.6.0.js"></script>
+        <script src="Esercizio2.js"></script>
+        <link rel="stylesheet" type="text/css" href="Esercizio2.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="div-title">
+                <h1>Lista dei desideri</h1>
+                <h2>Prodotti</h2>
+            </div>
+            <div class="div-products">
+                <div>
+                    <label>Prodotto 1</label><button id="button-first-product" on_click="addProduct()">Aggiungi alla lista</button>
+                </div>
+                <div>
+                    <label>Prodotto 2</label><button id="button-second-product" on_click="addProduct()">Aggiungi alla lista</button>
+                </div>
+                <div>
+                    <label>Prodotto 3</label><button id="button-third-product" on_click="addProduct()">Aggiungi alla lista</button>
+                </div>
+            </div>
+            <div class="div-title">
+                <h2>La tua lista dei desideri</h2>
+            </div>
+            <div class="div-dreams">
+                <p id="paragraph-first-product" style="visibility: hidden;">Prodotto 1: <span id="span-first-product">0</span></p>
+                <p id="paragraph-second-product" style="visibility: hidden;">Prodotto 2: <span id="span-second-product">0</span></p>
+                <p id="paragraph-third-product" style="visibility: hidden;">Prodotto 3: <span id="span-third-product">0</span></p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "API per la gestione di un blog di botanica"
+paths:
+  /blog/articoli/:
+    get:
+      operationId: "getArticlesByCategoryAndDate"
+      description: "Get degli articoli di alcune categorie e pubblicati ad una certa data"
+      parameters:
+        - name: categoria
+          required: true
+          in: query
+          type: string
+        - name: dataPubblicazione
+          required: true
+          in: query
+          type: string
+          format: date
+      responses:
+        '200':
+          description: "Success articoli appartenenti alle categorie e pubblicati in una certa data individuati"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Articolo"
+        '400':
+          description: "Failed nessun articolo rispetta le condizioni date"
+  /blog/:
+    post:
+      operationId: "addArticleToBlog"
+      description: "Add di un articolo all'interno del blog"
+      parameters:
+        - name: articolo
+          required: true
+          in: body
+          schema:
+            $ref: "#/definitions/Articolo"
+      responses:
+        '200':
+          description: "Success articolo aggiunto al blog"
+          schema:
+            $ref: "#/definitions/Articolo"
+        '400':
+          description: "Failed articolo non aggiunto al blog"
+  /blog/articoli/{idArticolo}/:
+    put:
+      operationId: "updateContentArticle"
+      description: "Update del contenuto di un articolo"
+      parameters:
+        - name: idArticolo
+          required: true
+          in: path
+          type: integer
+          format: int32
+        - name: contenuto
+          required: true
+          in: body
+          schema:
+            type: string
+            example: "Una delle più grandi scoperte risale..."
+      responses:
+        '200':
+          description: "Success contenuto dell'articolo aggiornato"
+        '400':
+          description: "Failed contenuto dell'articolo non aggiornato"
+definitions:
+  Articolo:
+    type: object
+    required:
+      - idArticolo
+      - dataPubblicazione
+      - titolo
+      - contenuto
+      - categoria
+    properties:
+      idArticolo:
+        type: integer
+        format: int32
+        example: 001
+      dataPubblicazione:
+        type: string
+        format: date
+        example: "12/02/2022"
+      titolo:
+        type: string
+        example: "La più grande innovazione"
+      contenuto:
+        type: string
+        example: "Una della più grandi innovazioni risale..."
+      categoria:
+        type: string
+        enum:
+          - "orto"
+          - "fiori"
+          - "attrezzi"
+          - "prodotti"
+          - "consigli"
+          - "news"
+        example: "orto"

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                width: 100%;
+                height: 100%;
+            }
+
+            #main {
+                width: 50%;
+                height: auto;
+                display: flex;
+            }
+
+            #main-content {
+                width: 50%;
+                font-weight: bold;
+                color: white;
+                background-color: blue;
+            }
+
+            nav {
+                display: flex;
+                width: 50%;
+                height: auto;
+                float: left;
+            }
+
+            nav div {
+                width: auto;
+                height: auto;
+                margin-left: 1rem;
+                padding: 1rem;
+                font-size: 14pt;
+                color: blue;
+                border: 2px dashed blue;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="main">
+            <section id="main-content">
+                A month is a unit of time, used with calendars, that is approximately as
+                long as a natural orbital period of the Moon; the words month and Moon are
+                cognates.
+            </section>
+            <nav>
+                <div id="jan" class="nav-item">Jan</div>
+                <div id="feb" class="nav-item">Feb</div>
+                <div id="mar" class="nav-item">Mar</div>
+            </nav>
+        </section>
+    </body>
+</html>
