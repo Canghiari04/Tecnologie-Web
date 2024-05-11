@@ -1,0 +1,107 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "API per la gestione di una spiaggia"
+paths:
+  /spiaggia/stabilimenti/{numeroStabilimento}/:
+    put:
+      operationId: updateDescription
+      description: "Update della descrizione di uno stabilimento"
+      parameters:
+        - name: numeroStabilimento
+          required: true
+          in: path
+          type: integer
+          format: int32
+        - name: descrizione
+          required: true
+          in: body
+          schema:
+            type: string
+            example: "Stabilimento rinnovato del tutto."
+      responses:
+        '200':
+          description: "Success descrizione aggiornata con successo"
+        '400':
+          description: "Failed i parametri inseriti non sono corretti"
+    get:
+      operationId: getOmbrelloni
+      description: "Get di tutti gli ombrelloni liberi di uno stabilimento"
+      parameters:
+        - name: numeroStabilimento
+          required: true
+          in: path
+          type: integer
+          format: int32
+      responses:  
+        '200':
+          description: "Success ombrelloni liberi presenti all'interno dello stabilimento"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Ombrellone"
+        '400':
+          description: "Failed i parametri inseriti non sono corretti"
+        '500':
+          description: "Failed nessun ombrellone libero all'interno dello stabilimento"
+  /spiaggia/stabilimenti/{numeroStabilimento}/ombrelloni/:
+    post:
+      operationId: addOmbrellone
+      description: "Post di un ombrellone all'interno di uno stabilimento"
+      parameters:
+        - name: numeroStabilimento
+          required: true
+          in: path
+          type: integer
+          format: int32
+        - name: ombrellone
+          required: true
+          in: body
+          schema: 
+            type: object
+            $ref: "#/definitions/Ombrellone"
+      responses:  
+        '200':  
+          description: "Success ombrellone aggiunto con successo"
+          schema:
+            type: object
+            $ref: "#/definitions/Ombrellone"
+        '400':
+          description: "Failed i parametri inseriti non sono corretti"
+definitions:
+  Stabilimento:
+    type: object
+    required:
+      - numeroStabilimento
+      - nome 
+      - descrizione
+    properties:
+      numeroStabilimento:
+        type: integer
+        format: int32
+        minimum: 1
+        example: 127
+      nome:
+        type: string
+        example: "Dune Beach"
+      descrizione:
+        type: string
+        example: "Stabilimento adorabile, per grandi e piccini."
+  Ombrellone:
+    type: object 
+    required:
+      - numeroOmbrellone
+      - accesso
+    properties:
+      numeroOmbrellone:
+        type: integer
+        format: int32
+        minimum: 1
+        example: 7
+      accesso:
+        type: string
+        enum:
+          - "libero"
+          - "occupato giornaliero"
+          - "occupato stagionale"
+        example: "libero"
