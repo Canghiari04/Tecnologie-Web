@@ -15,7 +15,7 @@ body>div {
 body>div>div:nth-child(1) {
     text-align: center;
     width: 60%;
-    height: 2.25rem;
+    height: 2.3rem;
     margin: auto;
 }
 
@@ -34,7 +34,7 @@ body>div>div:nth-child(1)>span:hover {
 
 body>div>div:nth-child(2) {
     width: 60%;
-    padding: 2rem;
+    padding: 1.75rem;
     margin: auto;
     font-size: 14pt;
     border: 2px solid black;
@@ -48,7 +48,50 @@ body>div>div:nth-child(2)>div {
     margin-top: 1rem;
 }
 
-a {
+body>div>div:nth-child(2)>div:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+body>div>div:nth-child(2)>div:nth-child(3)>div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    text-align: justify;
+}
+
+body>div>div:nth-child(2)>div:nth-child(3)>div>div {
+    margin-right: 1rem;
+}
+
+body>div>div:nth-child(2)>div:nth-child(3)>div>div>p {
+    background-color: lightgrey;
+    padding: 0.5rem;
+}
+
+body>div>div:nth-child(2)>div:nth-child(3)>div>div>p>img {
+    float: right;
+    max-width: 25%;
+    max-height: 25%;
+    margin-left: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+body>div>div:nth-child(2)>div:nth-child(3)>span {
+    text-align: center;
+    color: grey;
+    font-style: italic;
+}
+
+body>div>div:nth-child(2)>div:nth-child(3)>div>div>p>a {
     text-decoration: none !important;
     color: black;
+}
+
+a {
+    color: blue;
 }
