@@ -1,133 +1,118 @@
 swagger: "2.0"
-info:
+info: 
+  title: "API per la gestione di un sistema di messagistica"
   version: 1.0.0
-  title: "API per la gestione di un sistema di messaggistica"
 paths:
   /sistema/sessioni/{idSessione}/messaggi/:
     get:
-      operationId: getMessagesByScore
-      description: "Get di tutti i messaggi di una sessione aventi un certo score"
+      description: "Get di tutti i messaggi aventi un certo score"
+      operationId: getMessaggiByScore
       parameters:
-        - name: idSessione
+        - in: path
           required: true
-          in: path 
+          name: idSessione
           type: integer
           format: int32
-        - name: scoreMessaggio
+        - in: query
           required: true
-          in: query
+          name: scoreMessaggi
           type: integer
-          enum: 
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
+          format: int32
       responses:
         '200':
-          description: "Success messaggi con un certo score individuati nella sessione"
+          description: "Success messaggi individuati"
           schema:
             type: array
-            items: 
+            items:
               $ref: "#/definitions/Messaggio"
         '400':
-          description: "Failed nessun messaggio inviduato nella sessione"
+          description: "Failed parametri di input non corretti"
   /sistema/sessioni/{idSessione}/:
-    post: 
-      operationId: addMessage
-      description: "Add di un nuovo messaggio ad una sessione"
-      parameters:
-        - name: idSessione
+    post:
+      description: "Add di un messaggio alla sessione"
+      operationId: addMessaggio
+      parameters: 
+        - in: path
           required: true
-          in: path 
+          name: idSessione
           type: integer
           format: int32
-        - name: messaggio
+        - in: body
           required: true
-          in: body
+          name: nuovoMessaggio
           schema:
             type: object
             $ref: "#/definitions/Messaggio"
-      responses:
+      responses:    
         '200':
-          description: "Success messaggio aggiunto alla sessione"
+          description: "Success messaggi aggiunto"
           schema:
             type: object
             $ref: "#/definitions/Messaggio"
         '400':
-          description: "Failed messaggio non aggiunato alla sessione"
-  /sistema/sessioni/{idSessione}/messaggi/{idMessaggio}:
-    put: 
-      operationId: updateMessageScore
+          description: "Failed parametri di input non corretti"
+  /sistema/sessioni/{idSessione}/messaggi/{idMessaggio}/: 
+    put:
       description: "Update dello score di un messaggio"
+      operationId: updateScoreMessaggio
       parameters:
-        - name: idSessione
+        - in: path
           required: true
-          in: path 
+          name: idSessione
           type: integer
           format: int32
-        - name: idMessaggio
+        - in: path
           required: true
-          in: path 
+          name: idMessaggio
           type: integer
           format: int32
-        - name: score
+        - in: body
           required: true
-          in: body
+          name: nuovoScore
           schema:
             type: integer
-            enum: 
-              - 1
-              - 2
-              - 3
-              - 4
-              - 5
-      responses:
+            format: int32
+      responses:  
         '200':
           description: "Success score del messaggio aggiornato"
         '400':
-          description: "Failed score del messaggio non aggiornato"
+          description: "Failed parametri di input non corretti"
 definitions:
   Sessione:
     type: object
-    required: 
+    required:
       - idSessione
       - dataSessione
-      - listaMessaggi
     properties:
       idSessione:
         type: integer
         format: int32
-        example: 001
+        example: 1
       dataSessione:
         type: string
         format: date
-        example: "01/02/2021"
-      listaMessaggi:
-        type: array
-        items:
-          $ref: "#/definitions/Messaggio"
+        example: "01/01/2024"
   Messaggio:
     type: object
     required: 
       - idMessaggio
-      - testo
-      - score
-    properties:
-      idMessaggio:
+      - testoMessaggio
+      - scoreMessaggio
+    properties: 
+      idMessaggio: 
         type: integer
         format: int32
-        example: 007
-      testo:
-       type: string
-       example: "Ciao, come stai?"
-      score:
+        example: 7
+      testoMessaggio:
+        type: string
+        example: "Ciao, come stai?"
+      scoreMessaggio:
         type: integer
-        enum:
-          - 1
+        format: int32
+        enum: 
+          - 1 
           - 2
           - 3
-          - 4
+          - 4 
           - 5
-        example: 5
-    
+        example: 3
