@@ -1,0 +1,97 @@
+swagger: "2.0"
+info:
+  title: "Esercizio 1 Esame 10/02/2022"
+  description: "API per la gestione di un ristorante"
+  version: 1.0.0
+paths:
+  /ristorante/sale/:
+    get:
+      summary: "Get di tutte le sale aventi una certa capienza"
+      operationId: getSaleByNumber
+      parameters:
+        - in: query 
+          required: true
+          name: numeroCoperti
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: "Success sale individuate"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Sala"
+        '400':
+          description: "Failed parametri in input non corretti"
+  /ristorante/sale/{nomeSala}/tavoli/:
+    post: 
+      summary: "Add di un tavolo all'interno di una sala"
+      operationId: addTavolo
+      parameters: 
+        - in: path
+          required: true
+          name: nomeSala
+          type: string
+        - in: body
+          required: true
+          name: nuovoTavolo
+          schema: 
+            type: object
+            $ref: "#/definitions/Tavolo"
+      responses:
+        '200':
+          description: "Success tavolo aggiunto"
+          schema: 
+            type: object
+            $ref: "#/definitions/Tavolo"
+        '400':
+          description: "Failed parametri in input non corretti"
+        '500':
+          description: "Failed capienza della sala non sufficiente"
+  /ristorante/sale/{nomeSala}/:
+    delete:
+      summary: "Delete dei tavoli all'interno della sala" 
+      operationId: deleteTavoliFromSala
+      parameters:
+        - in: body
+          required: true
+          name: idTavoli
+          schema:   
+            type: array
+            items:
+              type: integer
+              format: int32
+              example: [4, 7, 46, 58]
+      responses:
+        '200': 
+          description: "Success tavoli eliminati dalla sala"
+        '400':
+          description: "Failed parametri in input non corretti"
+definitions:
+  Sala:
+    type: object
+    required:
+      - nomeSala
+      - numeroCopertiSala
+    properties:
+      nomeSala:
+        type: string
+        example: "Sala nera"
+      numeroCopertiSala:
+        type: integer
+        format: int32
+        example: 100
+  Tavolo:
+    type: object
+    required:
+      - numeroTavolo
+      - numeroCopertiTavolo
+    properties:
+      numeroTavolo:
+        type: integer
+        format: int32
+        example: 7
+      numeroCopertiTavolo:
+        type: integer
+        format: int32
+        example: 10

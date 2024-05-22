@@ -1,81 +1,93 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var requestNews = new XMLHttpRequest();
-    requestNews.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/eu/news.php", true);
+document.addEventListener("DOMContentLoaded", function() {
+    getNews();
+    getTopics();
+})
 
-    var requestTopics = new XMLHttpRequest();
-    requestTopics.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/eu/topics.php", true);
-    
-    requestNews.onload = () => {
-        (requestNews.status == '200') ? getNews(requestNews, document.getElementById("div-news")) : console.log("Errore durante la richiesta!") 
+function getNews() {
+    var request = new XMLHttpRequest();
+    request.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/eu/news.php", true);
+    request.onload = () => {
+        (request.status === 200) ? (addNews(request.response)) : (console.error("Errore durante la richiesta"));
     }
 
-    requestNews.send();
-    
-    requestTopics.onload = () => {
-        (requestTopics.status == '200') ? getTopics(requestTopics, document.getElementById("div-topics")) : console.log("Errore durante la richiesta!") 
+    request.send();
+}
+
+function getTopics() {
+    var request = new XMLHttpRequest();
+    request.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/eu/topics.php", true);
+    request.onload = () => {
+        (request.status === 200) ? (addTopics(request.response)) : (console.error("Errore durante la richiesta"));
     }
 
-    requestTopics.send();   
-});
+    request.send();
+}
 
-function getNews(requestNews, idNews) {
-    var tokensNews = JSON.parse(requestNews.response);
+function addNews(response) {
+    var tokens = JSON.parse(response);
 
-    for(let index in tokensNews) {
-        var item = tokensNews[index];
+    for(index in tokens) {
+        var items = tokens[index];
 
-        if(typeof(item) == "object") {
-            for(let index in item) {
-                var divNew = document.createElement("div");
-                
-                var pTitle = document.createElement("p");
-                pTitle.textContent = item[index].type + " | " + item[index].date;
-                
-                var pContent = document.createElement("p"); 
-                pContent.textContent = item[index].content;
-                
-                var aNew = document.createElement("a");
-                var attribute = document.createAttribute("href");
-                attribute.value = "/news/" + item[index].id + "/";
-                aNew.setAttributeNode(attribute);
-                aNew.appendChild(pContent);
+        if(typeof(items) == "object") {
+            for(let i = 0; i <= (items.length - 1); i++) {
+                var divNews = document.getElementById("div-news");
 
-                divNew.appendChild(pTitle);
-                divNew.appendChild(aNew);
-                
-                idNews.appendChild(divNew);
+                var div = document.createElement("div");
+
+                var span = document.createElement("span");
+                span.innerHTML = items[i].type.toUpperCase() + items[i].date;
+
+                var a = document.createElement("a");
+
+                var href = document.createAttribute("href");
+                href.value = `/news/${items[i].id}`;
+
+                a.setAttributeNode(href);
+
+                var p = document.createElement("p");
+                p.innerHTML = items[i].content;
+
+                a.appendChild(p);
+
+                div.appendChild(span);
+                div.appendChild(a);
+
+                divNews.appendChild(div);
             }
         }
     }
 }
 
-function getTopics(requestTopics, idTopics) {
-    var tokensTopics = JSON.parse(requestTopics.response);
+function addTopics(response) {
+    var tokens = JSON.parse(response);
 
-    for(let index in tokensTopics) {
-        var item = tokensTopics[index];
+    for(index in tokens) {
+        var item = tokens[index];
+
+        var divTopics = document.getElementById("div-topics");
+
+        var a = document.createElement("a");
 
         var div = document.createElement("div");
-        var idDiv = document.createAttribute("onclick");
-        idDiv.value = "changeColor()";
-        div.setAttributeNode(idDiv);
+
+        var click = document.createAttribute("onclick");
+        click.value = "changeColor()";
+
+        div.setAttributeNode(click);
 
         var h2 = document.createElement("h2");
         h2.innerHTML = item.label;
-    
+
         var p = document.createElement("p");
         p.innerHTML = item.title;
-    
-        var aLink = document.createElement('a');
-        var attribute = document.createAttribute("href");
-        attribute.value = "/topics/" + item.link + '/';
-        aLink.setAttributeNode(attribute);
-        aLink.appendChild(h2);
-    
-        div.appendChild(aLink);
+
+        div.appendChild(h2);
         div.appendChild(p);
-    
-        idTopics.appendChild(div);
+            
+        a.appendChild(div);
+
+        divTopics.appendChild(a);
     }
 }
 
@@ -83,8 +95,5 @@ function changeColor() {
     /* <--> */
     var element = event.target;
 
-    if(element.style.backgroundColor == "white")
-        element.style.backgroundColor = "lightBlue";
-    else 
-        element.style.backgroundColor = "white";
+    (element.style.backgroundColor != "lightblue") ? (element.style.backgroundColor = "lightblue") : (element.style.backgroundColor = "white")
 }

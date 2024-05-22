@@ -1,21 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("input-date").addEventListener("click", function() {
-        var content = document.getElementById("input-date");
-        var data = new Date(content.value); 
+        var y = new Date(document.getElementById("input-date").value);
 
-        if(data.getDay() != 6 && data.getDay() != 0)
-            addWorkingDay()
-        else
-            addHolidayDay()
-    });
+        (y.getDay() == 6 || y.getDay() == 0) ? (addWeekend(document.getElementById("weekend"), document.getElementById("weekend").innerHTML)) : (addLavorativo(document.getElementById("lavorativo"), document.getElementById("lavorativo").innerHTML))
+    })
+})
 
-    function addHolidayDay() {
-        var numb = parseInt(document.getElementById("td-holiday-day").textContent) + 1;
-        document.getElementById("td-holiday-day").innerHTML = numb;
-    }
+function addWeekend(label, value) {
+    label.innerHTML = parseInt(value) + 1;
+}
 
-    function addWorkingDay() {
-        var numb = parseInt(document.getElementById("td-working-day").textContent) + 1;
-        document.getElementById("td-working-day").innerHTML = numb;
-    } 
-});
+function addLavorativo(label, value) {
+    label.innerHTML = parseInt(value) + 1;
+}
