@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <style>
-            body {
-                width: 100%;
-                height: 100%;
+            body, html {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                max-width: 100vw;
+                max-height: 100vh;
+                padding: 0;
+                margin: 0;
             }
 
             #main {
-                width: 50%;
-                height: auto;
                 display: flex;
+                flex-direction: row;
+                width: 50%;
+                padding: 1rem
             }
 
             #main-content {
-                width: 50%;
+                font-size: 16pt;
                 font-weight: bold;
                 color: white;
                 background-color: blue;
@@ -22,16 +27,13 @@
 
             nav {
                 display: flex;
-                width: 50%;
-                height: auto;
-                float: left;
+                flex-direction: row;
+                padding: 1rem;
+                gap: 1rem;
             }
 
-            nav div {
-                width: auto;
-                height: auto;
-                margin-left: 1rem;
-                padding: 1rem;
+            nav>div {
+                padding: 1rem 0.5rem 1rem 0.5rem;
                 font-size: 14pt;
                 color: blue;
                 border: 2px dashed blue;
