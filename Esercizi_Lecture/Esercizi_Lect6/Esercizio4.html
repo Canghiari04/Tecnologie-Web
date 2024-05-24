@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <style>
+            div {
+                display: grid;
+                grid-template-columns: 10% 10%;
+            }
+        </style>
         <script src="Esercizio4.js"></script>
     </head>
     <body>
-        <h1>Calcolatore: la moltiplicazione e la divisione di due numeri</h1>
+        <h1>Calcoltore: la moltiplicazione e la divisione di due numeri</h1>
         <h2>Basta inserire due numeri e premere un pulsante!</h2>
         <div>
-            <label>1 numero:<input id="firstNumber" type="integer"></label>
+            <label>1 numero:</label>
+            <input id="first-input" type="number">
+            <label>2 numero:</label>
+            <input id="second-input" type="number">
         </div>
-        <div>
-            <label>2 numero:<input id="secondNumber" type="integer"></label>
-        </div>
-        <button id="button-multiplication">Moltiplicare</button>
-        <button id="button-division">Dividire</button>
-        <p>Il risultato è: <span style="visibility: hidden;">Nan</span></p>
-        <span>Numeri magici del giorno:</span>
+        <button id="button-multiply">Moltiplicare</button>
+        <button id="button-division">Dividere</button>
+        <p>Il risultato è:</p>
+        <span id="span-result" style="visibility: hidden;"></span>
+        <p>Numeri magici del giorno:</p>
         <ul id="list-magic-numbers">
 
         </ul>
-        <span>Numeri magici <span style="font-weight: bold;">trovati</span>:</span>
-        <ul id="list-magic-numbers-found">
-
+        <span>Numeri magici <b>trovati</b>.</span>
+        <ul id="list-magic">
+            
         </ul>
         <span>Elenco delle tue moltiplicazioni e divisioni:</span>
-        <ul id="list-operation">
-
+        <ul id="list-history">
+            
         </ul>
     </body>
 </html>

@@ -1,7 +1,130 @@
 swagger: "2.0"
-info:
+info: 
+  title: "Esercizio 3"
+  description: "API per la gestione di una collezione di serie televesive"
   version: 1.0.0
-  title: "API per la gestione di una collezione di serie televisive"
 paths:
-
+  /serie/:
+    get:
+      description: "Get di tutte le serie TV di un certo genere e pubblicate ad una certa data"
+      operationId: getSerieByGenereAndData
+      parameters:
+        - in: query
+          required: true
+          name: genereSerie
+          type: string
+          enum: 
+            - "Animazione"
+            - "Avventura"
+            - "Azione"
+            - "Commedia"
+            - "Documentario"
+        - in: query
+          required: true
+          name: dataPubblicazioneSerie
+          type: string
+          format: date
+      responses:
+        '200':
+          description: "Success serie TV inviduate"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Episodio"
+        '400':
+          description: "Failed parametri di input non corretti"
+  /serie/{idSerie}/episodi/:
+    post:
+      description: "Add di un episodio ad una serie"
+      operationId: addEpisodioToSerie
+      parameters: 
+        - in: path
+          required: true  
+          name: idSerie
+          type: integer
+          format: int32
+        - in: body
+          required: true
+          name: nuovoEpisodio
+          schema: 
+            type: object
+            $ref: "#/definitions/Episodio"
+      responses:  
+        '200':
+          description: "Success episodio aggiunto"
+          schema: 
+            type: object
+            $ref: "#/definitions/Episodio"
+        '400':
+          description: "Failed parametri in input non corretti"
+  /serie/{idSerie}/episodi/{numeroEpisodio}/:
+    put:
+      description: "Update del titolo di un episodio"
+      operationId: updateTitoloEpisodio
+      parameters: 
+        - in: path
+          required: true  
+          name: idSerie
+          type: integer
+          format: int32
+        - in: path
+          required: true  
+          name: numeroEpisodio
+          type: integer
+          format: int32
+        - in: body 
+          required: true
+          name: nuovoTitolo
+          schema: 
+            type: object
+            properties: 
+              titolo:
+                type: string
+                example: "La pace"
+      responses:    
+        '200':  
+          description: "Success titolo del test aggiornato"
+        '400':
+          description: "Failed parametri in input non corretti"
 definitions:
+  Serie TV:
+    type: object
+    required: 
+      - id
+      - titolo
+      - dataPubblicazione
+      - genere
+    properties:
+      id: 
+        type: integer
+        format: int32
+        example: 001
+      titolo:
+        type: string
+        example: "Stranger Things"
+      dataPubblicazione:
+        type: string
+        format: date
+        example: "01/01/2021"
+      genere:
+        type: string
+        enum:
+          - "Animazione"
+          - "Avventura"
+          - "Azione"
+          - "Commedia"
+          - "Documentario"
+  Episodio:
+    type: object  
+    required: 
+      - numero
+      - titolo
+      - genere
+    properties: 
+      numero:
+        type: integer
+        format: int32
+        example: 11
+      titolo: 
+        type: string
+        example: "Lo scontro"
