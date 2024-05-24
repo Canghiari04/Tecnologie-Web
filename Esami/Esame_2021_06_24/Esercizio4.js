@@ -1,19 +1,30 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("my-button").addEventListener("click", function() {
-        var input = document.getElementById("my-input").value;
-        var arrayCharacters = new Array();
+    var arrayInput = new Array();
+    arrayInput = ["italia", "germania", "Portogallo", "SPAGNA", "SVEZIA", "Grecia"];
 
-        const array = input.split(", ");
+    var arrayChar = new Array();
 
-        for(let i = 0; i < array.length; i++) {
-            var firstCharacter = array[i].substr(0, 1).toLowerCase();
-            
-            if(!arrayCharacters.includes(firstCharacter)) 
-                arrayCharacters.push(firstCharacter);
-        }
+    var input = document.getElementById("input");
+    input.innerHTML = "";
 
-        arrayCharacters.sort((a, b) => a - b);
+    var output = document.getElementById("output");
+    output.innerHTML = "";
 
-        console.log(arrayCharacters);
-    });
-});
+    for(let i = 0; i <= arrayInput.length - 1; i++) {
+        var textWord = document.createTextNode(arrayInput[i] + " ");
+        input.appendChild(textWord);
+
+        arrayChar.push(arrayInput[i].substring(0, 1).toLowerCase());
+    }
+
+    arrayChar.sort();
+    
+    for(let i = 0; i <= arrayChar.length - 1; i++) {
+        var text = document.createTextNode(arrayChar[i] + " ");
+        output.appendChild(text);
+    }
+
+    input.style.visibility = "visible";
+    output.style.visibility = "visible";
+
+})

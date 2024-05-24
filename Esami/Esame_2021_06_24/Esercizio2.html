@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="Esercizio2.css">
+        <meta chrset="UTF-8">
+        <link type="text/css" rel="stylesheet" href="Esercizio2.css">
     </head>
     <body>
         <div>
             <div>
                 <table>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrizione</th>
-                        <th>Prezzo giornaliero</th>
-                        <th>Disponibilità</th>
-                    </tr>
-                    <tr>
-                        <td>Standard</td>
-                        <td>Ombrellone con due lettini</td>
-                        <td>20 $</td>
-                        <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/yes.png"></td>
-                    </tr>
-                    <tr>
-                        <td>Love Dogs</td>
-                        <td>Standard, due lettini e spazio dedicato al tuo cane</td>
-                        <td>40 $</td>
-                        <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/yes.png"></td>
-                    </tr>
-                    <tr>
-                        <td>Primissima</td>
-                        <td>Prima fila, formato capanna, tre posti</td>
-                        <td>50 $</td>
-                        <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/no.png"></td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrizione</th>
+                            <th>Prezzo (giornaliero)</th>
+                            <th>Disponibilità</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Standard</td>
+                            <td>Ombrellone con due lettini</td>
+                            <td>20 $</td>
+                            <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/yes.png" alt="logo.png"></td>
+                        </tr>
+                        <tr>
+                            <td>Standard</td>
+                            <td>Ombrellone con due lettini</td>
+                            <td>20 $</td>
+                            <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/yes.png" alt="logo.png"></td>
+                        </tr>
+                        <tr>
+                            <td>Standard</td>
+                            <td>Ombrellone con due lettini</td>
+                            <td>20 $</td>
+                            <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/no.png" alt="logo.png"></td>
+                        </tr>
+                    </tbody>
                 </table>
-                <h2>Calcola il tuo preventivo e prenota!</h2>
+                <h2>Calcola il tuo prenventivo e prenota!</h2>
                 <div>
                     <label>Postazione</label>
                     <select>
-                        <option>Standard</option>
                         <option selected>Love Dogs</option>
+                        <option>Love Dogs</option>
+                        <option>Love Dogs</option>
                     </select>
                     <label>Giorni</label>
                     <select>
@@ -52,12 +58,12 @@
                     <label>Cliente</label>
                     <input type="text">
                 </div>
-                <button>Prenota</button>
-            </div>
-        </div>
-        <div>
-            <div>
-                160 $
+                <button type="submit">Prenota</button>
+                <div>
+                    <div>
+                        <span>160 $</span>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
