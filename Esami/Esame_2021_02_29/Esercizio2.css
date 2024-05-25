@@ -1,0 +1,96 @@
+body, html {
+    max-width: 100vw;
+    max-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: lightgrey;
+}
+
+body>div>nav {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    margin: 0;
+    background-color: white;
+    box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.4);
+}
+
+body>div>nav>div:nth-of-type(1) {
+    width: 25%
+}
+
+body>div>nav>div:nth-of-type(2) {
+    text-align: left;
+    width: 75%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+body>div>nav>div:nth-of-type(2)>a {
+    margin-right: 2rem;
+    font-weight: bold;
+}
+
+h2 {
+    padding-left: 2rem;
+}
+
+body>div>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 5rem;
+}
+
+body>div>div>div {
+    width: 22.5%;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
+}
+
+body>div>div>div>div:nth-of-type(1) {
+    height: 250px;
+    padding: 2rem;
+    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/1409/virtus.png);
+    background-size: cover;
+}
+
+body>div>div>div>div:nth-of-type(1)>span {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: white;
+    background-color: red;
+    border-radius: 1rem;
+}
+
+body>div>div>div>div:nth-of-type(2) {
+    padding: 2rem;
+}
+
+body>div>div>div>div:nth-of-type(2)>span {
+    font-weight: bold;
+    border-collapse: collapse;
+}
+
+body>div>div>div>div:nth-of-type(2)>p {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* <--> */
+body>div>div>div>div:nth-of-type(2)>p>span {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    gap: 0.25rem;
+}
+
+body>div>div>div>div:nth-of-type(2)>p>span>img {
+    width: 25px;
+    height: 25px;
+}
