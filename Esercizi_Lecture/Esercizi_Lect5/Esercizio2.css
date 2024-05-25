@@ -1,59 +1,107 @@
-html, body {
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0;
-    padding: 0;
+* {
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.container {
-    width: 100%;
-    height: 100%;
-    padding-bottom: 1rem;
+body, html {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
     background-color: lightgrey;
 }
 
-.div-title {
-    padding-left: 2rem;
-}
-
-.div-products {
+body>div {
+    position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
-.div-products div {
-    width: 95%;
-    margin: auto;
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 5px;
-}
-
-button {
-    float: right;
-    margin: 0 auto;
-    margin-right: 1rem;
-    padding: 5px;
+body>div>div:nth-of-type(1) {
+    text-align: center;
+    padding: 110px 0px 110px 0px;
     color: white;
-    background-color: lime;
-    border: none !important;
-    border-radius: 5px;
+    background-image: url("http://diiorio.nws.cs.unibo.it/twe/07.06.2022a/shows_events_bg.jpg");
+}
+
+body>div>div:nth-of-type(2) {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+@media (min-width: 992px) {
+    body>div>div:nth-of-type(2)>div {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+        background-color: white;
+    }    
+
+    body>div>div:nth-of-type(2)>div>div {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        height: auto;
+        padding: 1rem;
+        font-size: 14pt;
+    }
+    
+    body>div>div:nth-of-type(2)>div>div>a {
+        width: 60%;
+        padding: 0.5rem;
+        margin: auto;
+        text-decoration: none !important;
+        font-size: 12pt;
+        color: white;
+        background-color: black;
+    }
+}
+
+body>div>div:nth-of-type(2)>div>div>span>a {
+    text-decoration: none !important;
+    color: black;
+}
+
+@media (max-width: 992px) {
+    body>div>div:nth-of-type(2)>div {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        margin-top: 1rem;
+        background-color: white;
+    }    
+
+    body>div>div:nth-of-type(2)>div>div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        margin: auto;
+        font-size: 14pt;
+    }
+
+    body>div>div:nth-of-type(2)>div>div>span {
+        width: 100%;
+        margin: 0.25rem;
+    }
+
+    body>div>div:nth-of-type(2)>div>div>a {
+        width: 30%;
+        padding: 0.5rem;
+        margin: auto;
+        text-decoration: none !important;
+        font-size: 12pt;
+        color: white;
+        background-color: black;
+    }
 }
 
 button:hover {
     cursor: pointer;
-    background-color: limegreen;
-}
-
-.div-dreams {
-    width: 85%;
-    margin: auto;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 5px;
-}
-
-span {
-    font-weight: bold;
 }
