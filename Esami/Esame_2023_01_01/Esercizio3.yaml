@@ -1,50 +1,48 @@
-swagger: "3.0"
-info:
-  title: "API per la getsione di un parco auto"
+swagger: "2.0"
+info: 
+  title: "Esercizio 1 Esame 01/01/2023"
+  description: "API per la gestione di un parco auto"
   version: 1.0.0
 paths:
   /parco/automobili/:
     get:
-      summary: "Get di tutte le auto presenti nel parco auto"
-      operationId: getCars
+      description: "Get di tutte le auto presenti"
+      operationId: getAutomobiliFromParco
       parameters:
         - in: query
           required: false
           name: annoImmatricolazione
           type: integer
           format: int32
-          schema: 
-            type: integer
-            example: 2021
       responses:
         '200':
-          description: "Success auto presenti all'interno del parco auto"
+          description: "Success"
           schema:
             type: array
             items:
               $ref: "#/definitions/Automobile"
         '400':
-          description: "Failed nessuna auto presente nel parco auto"
+          description: "Failed"
   /parco/automobili/{targaAutomobile}/:
     put:
-      summary: "Put di una descrizione per una determinata auto"
-      operationId: updateDescription
-      parameters:  
+      description: "Update della descrizione di un auto"
+      operationId: updateDescrizioneAutomobile
+      parameters: 
         - in: path
           required: true
           name: targaAutomobile
           type: string
         - in: body
           required: true
-          name: descrizioneAutomobile
+          name: nuovaDescrizione
           schema:
             type: string
-            example: "Auto familiare di colore giallo"
-      responses:
-        '200':
-          description: "Success descrizione aggiornata con successo"
-        '400':
-          description: "Failed descrizione non aggiornata"
+            example: "Berlina rossa sportiva"
+      responses:  
+        '200':  
+          description: "Success"
+        '400':  
+          description: "Failed"
 definitions:
   Automobile:
     type: object
@@ -58,7 +56,7 @@ definitions:
         example: "CA070CA"
       descrizione:
         type: string
-        example: "Auto familiare di colore blu"
+        example: "Auto blu sportiva"
       annoImmatricolazione:
         type: integer
         format: int32

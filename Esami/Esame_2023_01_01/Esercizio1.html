@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-        <link type="text/css" rel="stylesheet" href="Esercizio1.css">
-        <meta type="text/html" charset="UTF-8">
+        <title>Esercizio 1 Esame 01/01/2023</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="Esercizio1.css">
     </head>
     <body>
         <h1>Gran tour in Europa</h1>
@@ -14,14 +14,14 @@
             <a href=/asia>Viaggi in Asia</a>
         </nav>
         <h2>Le fantastiche città da visitare in Europa:</h2>
-        <form>
+        <form> <!-- uso del tag form anomalo -->
             <ol>
-                <li><input type="radio" value="citta" name="Aosta">Aosta</input></li> <!-- chiusura del tag "<input>" non necessaria -->
+                <li><input type="radio" value="citta" name="Aosta">Aosta</input></li> <!-- chiusura del tag input non necessaria -->
                 <li><input type="radio" value="citta" name="Torino"/>Torino</li>
                 <li><input type="radio" value="citta" name="Milano"/>Milano</li>
                 <li><input type="radio" value="citta" name="Bologna"/>Bologna</li>
                 <li><input type="radio" value="citta" name="Roma"/>Roma</li>
-                <li><input type="radio" value="citta" name="Napoli" checked/>Napoli</li>
+                <li><input type="radio" value="citta" name="Napoli"/>Napoli</li>
                 <li><input type="radio" value="citta" name="ReggioCalabria"/> Reggio Calabria</li>
                 <li><input type="radio" value="citta" name="Siracusa"/>Siracusa</li>
             </ol>
@@ -30,7 +30,7 @@
             <h2>Descrizione del viaggio a Torino:</h2>
             <table>
                 <thead>
-                    <th><td>numero partecipanti</td><th>prezzo (a persona)</th></th> <!-- mancanza del tag "<tr>" all'interno della tabella -->
+                    <td>numero partecipanti</td><th>prezzo (a persona)</th> <!-- chiusura errata del tag th, in questo caso era necessario un tr>[1 o più th]-->
                 </thead>
                 <tbody>
                     <tr><td>da 1 a 3</td><td>€ 500</td></tr>
@@ -43,7 +43,7 @@
             Cinema, Mole Antonelliana e Palazzo Madama.</p>
             <p>Viaggia con noi attraverso un territorio dal fascino
             straordinario, tra arte e storia, natura e cultura, sport e tradizione. In
-            provincia di Torino la scoperta non ha mai fine, dalla prima capitale d’Italia
+            provincia di Torino la scoperta non ha mai fine, dalla prima capitale d'Italia
             alle Alpi delle Olimpiadi, dalle colline del Canavese alle vette del Gran
             Paradiso.</p>
             <p>Dal Palazzo Reale al Santuario della Consolata, dal Teatro

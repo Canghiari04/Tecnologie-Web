@@ -1,15 +1,9 @@
-html {
+body, html {
+    text-align: center;
     max-width: 100vw;
     max-height: 100vh;
     padding: 0;
     margin: 0;
-}
-
-body {
-    width: 90%;
-    margin: auto;
-    padding: 2rem;
-    border: 2px solid black;
 }
 
 h1 {
@@ -17,79 +11,77 @@ h1 {
     visibility: hidden;
 }
 
-nav {
-    text-align: center;
-    width: 100%;
+body>nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
 }
 
-
-nav>a {
-    padding: 1rem 2rem 1rem 2rem;
-    text-decoration: none !important;
-    color: white;
+body>nav>a {
+    padding: 1rem;
+    font-size: 14pt;
     font-weight: bold;
+    text-decoration: none;
+    color: white;
     background-color: red;
 }
 
 .selected {
-    background-color: grey;
     border: 3px solid black;
+    background-color: grey;
 }
 
-ol {
-    list-style-type: none !important;
+body>h2 {
+    text-align: left;
+    padding: 0.5rem;
 }
 
-table {
+body>form {
+    text-align: left;
+}
+
+body>form>ol {
+    list-style: none !important;
+}
+
+body>div {
+    text-align: left;
+    padding: 0.5rem;
+}
+
+body>div>table {
     float: right;
-    width: 25%;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
-tr {
-    width: 100%;
+table>thead>tr>th {
+    padding: 0.25rem;
+    border-bottom: 1px dashed black;
 }
 
-th>td:nth-of-type(1) {
+table>thead>tr>td {
+    padding: 0.25rem;
     font-weight: bold;
+    border-right: 1px dashed black;
+    border-bottom: 1px dashed black;
 }
 
-thead>tr>th:first-child {
-    text-align: center;
-}
-
-thead>tr>td {
+table>tbody>tr:nth-of-type(2) {
     font-weight: bold;
-    border-right: 2px black dashed;
-    border-bottom: 2px black dashed;
-    background-color: red;
-}
-
-thead>tr>th:first-child {
-    width: 0 !important;
-}
-
-thead>tr>th {
-    font-weight: bold;
-    border-bottom: 2px black dashed;
-    background-color: red;
-}
-
-tbody>tr:nth-child(2) {
     font-style: italic;
-    font-weight: bold;
 }
 
-tbody>tr:nth-child(2)>td {
-    width: 50%;
+table>tbody>tr>td {
+    padding: 0.25rem;
 }
 
-p {
+body>div>p {
     font-size: 14pt;
 }
 
 footer {
-    text-align: center;
-    margin-top: 2rem;
     color: grey;
 }
