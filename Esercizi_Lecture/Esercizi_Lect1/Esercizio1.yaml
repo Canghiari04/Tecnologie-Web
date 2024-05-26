@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  title: "Esercizio 1 Laboratorio Lecture 1"
+  version: 1.0.0
+  description: "API per la gestione di un ristorante"
+paths:
+  /ristorante/menus:
+    get:
+      description: "Get di tutti i menu"
+      operationId: getMenus
+      responses:
+        '200':
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Menu"
+        '400':
+          description: "Failed parametri in input non corretti"
+  /ristorante/menus/{idMenu}:
+    get:
+     description: "Get del menu"
+     operationId: getMenu
+     parameters:
+      - in: path
+        required: true
+        name: idMenu
+        type: integer
+        format: int32
+     responses:
+       '200':
+          description: "Success"
+          schema:
+            type: object
+            $ref: "#/definitions/Menu"
+       '400':
+          description: "Failed parametri in input non corretti"
+  /ristorante/menus/{idMenu}/piatti:
+    post:
+     description: "Get del menu"
+     operationId: getMenu
+     parameters:
+      - in: path
+        required: true
+        name: idMenu
+        type: integer
+        format: int32
+      - in: body
+        required: true
+        name: nuovoPiatto
+        schema: 
+          type: object
+          $ref: "#/definitions/Piatto"
+     responses:
+       '200':
+          description: "Success"
+       '400':
+          description: "Failed parametri in input non corretti"
+definitions:
+  Menu:
+    type: object
+    required:
+      - idMenu
+      - descrizione
+      - piatti
+    properties:
+      idMenu:
+        type: integer
+        format: in32
+        example: 1
+      descrizione:
+        type: string
+        example: "Menù vegetariano"
+      piatti:
+        type: array
+        items:
+          $ref: "#/definitions/Piatto"
+  Piatto:
+    type: object
+    required:
+      - idPiatto
+      - descrizione
+      - prezzo
+    properties: 
+      idPiatto:
+        type: integer
+        format: int32
+        example: 7
+      descrizione:
+        type: string
+        example: "Gnocchi ai quattro formaggi"
+      prezzo:
+        type: integer
+        format: float
+        example: 12.5

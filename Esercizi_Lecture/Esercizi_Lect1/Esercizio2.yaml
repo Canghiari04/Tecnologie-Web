@@ -1,0 +1,109 @@
+swagger: "2.0"
+info:
+  title: "Esercizio 2 Laboratorio Lecture 1"
+  version: 1.0.0
+  description: "API per la gestione di un blog di botanica"
+paths:
+  /blog/articoli/:
+    get:
+      description: "Get di tutti gli articoli di una certa categoria e pubblicati dopo una certa data"
+      operationId: getArticoliByCategoriaAndData
+      parameters:
+        - in: query
+          required: true
+          name: categoriaArticoli
+          type: string
+          enum: 
+            - "orto"
+            - "fiori"
+            - "attrezzi"
+            - "prodotti"
+            - "consigli"
+            - "news"
+        - in: query
+          required: true
+          name: dataPubblicazioneArticoli
+          type: string
+          format: date
+      responses:
+        '200':
+          description: "Success"
+          schema: 
+            type: array
+            items: 
+              $ref: "#/definitions/Articolo"
+        '400':
+          description: "Failed parametri in input non corretti"
+    post:
+      description: "Add di un nuovo articolo"
+      operationId: addArticolo
+      parameters:
+        - in: body
+          required: true
+          name: nuovoArticolo
+          schema:
+            type: object
+            $ref: "#/definitions/Articolo"
+      responses:  
+        '200':
+          description: "Success"
+          schema: 
+            type: object
+            $ref: "#/definitions/Articolo"
+        '400':
+          description: "Failed"
+  /blog/articoli/{idArticolo}: 
+    put:
+      description: "Update della descrizione di un articolo"
+      operationId: updateDescrizione
+      parameters:
+        - in: path
+          required: true
+          name: idArticolo
+          type: integer
+          format: int32
+        - in: body
+          required: true
+          name: nuovaDescrizione
+          schema: 
+            type: string
+            example: "Realizzare un innesto è estremamente..."
+      responses:  
+        '200':
+          description: "Success"
+        '400':
+          description: "Failed"
+definitions:
+  Articolo:
+    type: object
+    required:
+     - idArticolo
+     - dataPubblicazione
+     - titolo
+     - descrizione
+     - categoria
+    properties:
+      idArticolo:
+        type: integer
+        format: int32
+        example: 1
+      dataPubblicazione:
+        type: string
+        format: date
+        example: "01/01/2024"
+      titolo:
+        type: string
+        example: "Come realizzare un innesto"
+      descrizione:
+        type: string
+        example: "Per realizzare un innesto occorre..."
+      categoria:
+        type: string
+        enum: 
+          - "orto"
+          - "fiori"
+          - "attrezzi"
+          - "prodotti"
+          - "consigli"
+          - "news"
+        example: "consigli"

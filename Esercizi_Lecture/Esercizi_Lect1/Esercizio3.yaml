@@ -1,0 +1,117 @@
+swagger: "2.0"
+info: 
+  title: "Esercizio 3 Laboratorio Lecture 1"
+  version: 1.0.0
+  description: "API per la gestione di un sistema di annotazione"
+paths:
+  /sistema/immagini:
+    get:
+      description: "Get di tutte le immagini di una categoria"
+      operationId: getArticoloByCategoria
+      parameters:
+        - in: query
+          required: true
+          name: categoriaImmagine
+          type: string
+          enum:   
+            - "pittura"
+            - "pubblicità"
+            - "fotografia"
+      responses:
+        '200':
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Immagine"
+        '400':
+          description: "Failed parametri in input non corretti"
+  /sistema/immagini/{idImmagine}:
+    get:
+      description: "Get di tutti i tags di un'immagine"
+      operationId: getTags
+      parameters: 
+        - in: path
+          required: true
+          name: idImmagine
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: "Success"  
+          schema: 
+            type: array
+            items:  
+              $ref: "#/definitions/Tag"
+        '400':
+          description: "Failed parametri in input non corretti"
+    post:
+      description: "Add di un tag ad un'immagine"
+      operationId: addTag
+      parameters: 
+        - in: path
+          required: true
+          name: idImmagine
+          type: integer
+          format: int32
+        - in: body
+          required: true
+          name: nuovoTag
+          schema: 
+            type: object
+            $ref: "#/definitions/Tag"
+      responses:
+        '200':
+          description: "Success"  
+          schema: 
+            type: object
+            $ref: "#/definitions/Tag"
+        '400':
+          description: "Failed parametri in input non corretti"
+definitions:
+  Immagine:
+    type: object
+    required: 
+      - idImmagine
+      - url
+      - categoria
+      - tags
+    properties:
+      idImmagine:
+        type: integer
+        format: int32
+        example: 1
+      url: 
+        type: string
+        example: "/documents/owner/img"
+      categoria:
+        type: string
+        enum:
+          - "pittura"
+          - "pubblicità"
+          - "fotografia"
+        example: "pittura"
+      tags:
+        type: array
+        $ref: "#/definitions/Tag"
+  Tag: 
+    type: object
+    required: 
+      - idTag
+      - nome
+      - score
+    properties: 
+      idTag:
+        type: integer
+        format: int32
+        example: 7
+      nome: 
+        type: string
+        example: "Ottima composizione"
+      score: 
+        type: integer
+        format: int32
+        enum: 
+          - 1
+          - 2
+          - 3
