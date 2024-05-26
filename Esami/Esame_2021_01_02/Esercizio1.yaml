@@ -1,62 +1,64 @@
 swagger: "2.0"
 info:
-  version: 1.0.0
-  title: "API per la gestione di un parco pubblico"
+  title: "Esercizio 1 Esame 02/01/2021"
+  version: 1.0.0 
+  description: "API per la gestione di un parco auto"
 paths:
-  /parcheggio/automobili/:
+  /parco/automobili:
     get:
-      operationId: getCars
-      description: "Get di tutte le automobili del parcheggio"
+      description: "Get di tutte le automobili presenti"
+      operationId: getAutomobili
       parameters:
-        - name: annoImmatricolazione
+        - in: query
           required: false
-          in: query
+          name: annoImmatricolazioneMinimum
           type: integer
           format: int32
       responses:
         '200':
-          description: "Success sono presenti auto nel parcheggio"
+          description: "Success"
           schema:
             type: array
             items:
+              type: object
               $ref: "#/definitions/Automobile"
         '400':
-          description: "Failed nessuna auto presente nel parcheggio"
-  /parcheggio/automobili/{targa}/:
+          description: "Failed parametri di input non corretti"
+  /parco/automobili/{targaAutomobile}:
     put:
-      operationId: updateDescription
-      description: "Update della descrizione di un'auto"
-      parameters:   
-        - name: targa
+      description: "Update della descrizione di un'automobile"
+      operationId: updateDescrizione
+      parameters:
+        - in: path
           required: true
-          in: path
+          name: targaAutomobile
           type: string
-        - name: descrizione
+        - in: body
           required: true
-          in: body
-          schema:
+          name: nuovaDescrizione
+          schema: 
             type: string
-            example: "Berlina full optional"
-      responses:
+            example: "Berlina rossa sportiva"
+      responses:  
         '200':
-          description: "Success descrizione aggiornata"
+          description: "Success"
         '400':
-          description: "Failed descrizione non aggiornata"
+          description: "Failed parametri di input non corretti"
 definitions:
   Automobile:
     type: object
-    required:
+    required: 
       - targa
       - descrizione
       - annoImmatricolazione
     properties:
       targa:
         type: string
-        example: "CA070HG"
+        example: "CA070CA"
       descrizione:
         type: string
-        example: "Berlina super accessoriata"
+        example: "Berlina sportiva"
       annoImmatricolazione:
         type: integer
         format: int32
-        example: 2021 
+        example: 2021

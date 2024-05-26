@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Esercizio 2 Esame 02/01/2021</title>
         <link rel="stylesheet" type="text/css" href="Esercizio2.css">
+        <script src="Esercizio3.js"></script>
     </head>
     <body>
         <div>
@@ -46,22 +47,29 @@
                     <div>
                         <label>Menu di mare:</label>
                         <select id="menu-mare">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                         
                         </select>
                         <label>Menu di terra:</label>
                         <select id="menu-terra">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                          
                         </select>
                         <label>Menu di stagione:</label>
                         <select id="menu-stagione">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                           
                         </select>
+                    </div>
+                </fieldset>
+                <!-- tag fieldset utilizzati per la visualizzazione del menu consecutiva alla scelta -->
+                <fieldset id="fieldset-menu-mare" style="visibility: hidden;"> 
+                    <legend id="legend-menu-mare"></legend>
+                    <div id="div-menu-mare">
+                        
+                    </div>
+                </fieldset>
+                <fieldset id="fieldset-menu-terra" style="visibility: hidden;"> 
+                    <legend id="legend-menu-terra"></legend>
+                    <div id="div-menu-terra">
+                        
                     </div>
                 </fieldset>
             </div>

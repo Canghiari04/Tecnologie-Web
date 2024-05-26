@@ -2,45 +2,76 @@
 <html>
     <head>
         <style>
+            body, html {
+                max-width: 100vw;
+                max-height: 100vh;
+                padding: 0;
+                margin: 0;
+                font-family: Verdana, Geneva, Tahoma, sans-serif
+            }
+
+            #accursio {
+                max-width: 50%;
+                margin: auto;
+                border: 1px solid black;
+            }
+
+            h1 {
+                text-transform: uppercase;
+                text-align: right;
+            }
+
+            #accursio>p:nth-of-type(1) {
+                visibility: hidden;
+            }
+
+            body>div>div {
+                display: flex;
+                width: 100%;
+            }
+
+            body>div>div>p {
+                text-align: justify;
+                width: 50%;
+                padding: 0.5rem;
+                font-size: 14pt;
+            }
+
             @media print {
-                html, body {
+                body, html {
                     max-width: 100vw;
                     max-height: 100vh;
                     padding: 0;
                     margin: 0;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif
                 }
 
                 #accursio {
-                    position: relative;
-                    width: 90%;
-                    height: auto;
-                    padding: 1rem;
+                    max-width: 90%;
                     margin: auto;
-                    border: 2px solid black;
+                    border: 1px solid black;
                 }
 
                 h1 {
-                    float: right;
                     text-transform: uppercase;
+                    text-align: right;
                 }
 
-                #accursio>p {
+                #accursio>p:nth-of-type(1) {
                     visibility: hidden;
                 }
 
-                #accursio>div {
+                body>div>div {
                     display: flex;
-                    flex: column;
                     width: 100%;
-                    height: auto;
                 }
 
-                #accursio>div>p {
+                body>div>div>p {
                     text-align: justify;
                     width: 50%;
-                    height: auto;
-                    margin-right: 1rem;
-                }        
+                    padding: 0.5rem;
+                    font-size: 14pt;
+                }
             }
         </style>
     </head>
@@ -49,16 +80,11 @@
             <h1>Accursio</h1>
             <p>Una meraviglia in centro a Modica<p>
             <div>
-                <p class="intro">
-                    Accursio &egrave; un porto su un fiume di
-                    storia. Nel cuore del cuore di Modica, nei bassi di un vecchio palazzo del
-                    Corso, ora c'&egrave; una piccola cucina per raccogliersi e godere di secoli di
-                    cultura. 
+                <p class="intro"> 
+                    Accursio &egrave; un porto su un fiume di storia. Nel cuore del cuore di Modica, nei bassi di un vecchio palazzo del Corso, ora c'&egrave; una piccola cucina per raccogliersi e godere di secoli di cultura. 
                 </p>
                 <p>
-                    In questo luogo ci si ferma per traversare le Sicilie di
-                    mare e di terra. Tanto del fascino della Sicilia &egrave; come custodito in uno
-                    scrigno; da Accursio vi si offre una chiave.
+                    In questo luogo ci si ferma per traversare le Sicilie di mare e di terra. Tanto del fascino della Sicilia &egrave; come custodito in uno scrigno; da Accursio vi si offre una chiave.
                 </p>
             </div>
         </div>
