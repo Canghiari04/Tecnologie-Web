@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
         <style>
-            html, body {
-                width: 100vw;
-                height: 100vh;
-                padding: 0;
-                margin: 0;
+            body, html {
+                max-width: 100vw;
+                max-height: 100vw;
+                padding: 1rem;
+                margin: auto;
             }
 
             #egrid {
                 display: grid;
-                text-align: center;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: 1fr 1fr 1fr;
                 grid-template-areas:
                 "a1 a1 a2"
                 "a3 a4 a4"
                 "a3 a5 a5";
-                width: 50vw;
-                height: 125px;
-                padding: 0.5rem;
+                width: 50%;
+                padding: 1rem;
                 gap: 1rem;
                 background-color: orange;
             }
 
-            .area {     
-                padding: 0.25rem;
+            .area {
+                text-align: center;
+                width: 100%;
+                height: 100%;
                 color: white;
+                border: 1px solid black;
                 background-color: grey;
-                border: 2px solid black;
             }
 
             #a1 {
@@ -41,7 +43,7 @@
             }
 
             #a3 {
-                grid-area: a3;
+                 grid-area: a3;
             }
 
             #a4 {
@@ -53,7 +55,7 @@
             }
 
             #a6 {
-                visibility: hidden;
+                display: none;
             }
         </style>
     </head>

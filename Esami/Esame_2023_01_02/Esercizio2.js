@@ -1,30 +1,24 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("myButton").addEventListener("click", function() {
-        var array = new Array();
-        array = ["italia", "germania", "Portogallo", "SPAGNA", "SVEZIA", "Grecia"];
+    document.getElementById("button-click").addEventListener("click", function() {
+        getFirstCharacters(document.getElementById("input").value, document.getElementById("output"));
+    })
+})
 
-        getInitialCharacter(array, document.getElementById("myParagraph"));
-    });
+function getFirstCharacters(tokens, output) {
+    var arrayCharacters = new Array();
 
-    function getInitialCharacter(array, idParagraph) {
-        var arrayCharacters = new Array();
+    var items = tokens.split(", ");
 
-        for(let i = 0; i < array.length; i++) {
-            var character = array[i].substring(0, 1).toLowerCase();
-
-            (!arrayCharacters.includes(character)) ? arrayCharacters[i] = character : console.log("Lettera presente");
+    for(let i = 0; i <= items.length - 1; i++) {
+        if(!arrayCharacters.includes(items[i].substr(0, 1).toLowerCase())) {
+            arrayCharacters.push(items[i].substr(0, 1).toLowerCase())
         }
-
-        var text = "";
-        arrayCharacters.sort((a, b) => b - a);
-
-        for(let i = 0; i < arrayCharacters.length; i++) {
-            var character = arrayCharacters[i];
-            text =  text + character + "," ;
-        }
-
-        idParagraph.innerHTML = text;
-        idParagraph.style.visibility = "visible";
-        console.log(idParagraph);
     }
-});
+
+    arrayCharacters.sort();
+
+    for(let i = 0; i < arrayCharacters.length; i++) {
+        var textNode = document.createTextNode(`${arrayCharacters[i]} `);
+        output.appendChild(textNode);
+    }
+}

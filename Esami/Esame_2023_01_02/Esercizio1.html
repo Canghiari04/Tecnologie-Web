@@ -1,76 +1,64 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link type="text/css" rel="stylesheet" href="Esercizio1.css"> 
+        <meta charset="UTF-8">
+        <meta naem="viewport" content="width=width-device, initial-scale=1.0"> 
+        <link rel="stylesheet" type="text/css" href="Esercizio1.css">
     </head>
     <body>
         <div>
             <div>
                 <table>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrizione</th>
-                        <th>Prezzo (giornaliero)</th>
-                        <th>Disponibilità</th>
-                    </tr>
-                    <tr>
-                        <td>Standard</td>
-                        <td>Ombrellone con due lettini</td>
-                        <td>20£</td>
-                        <td><img src=""></td>
-                    </tr>
-                    <tr>
-                        <td>Love dogs</td>
-                        <td>Standard con due lettini e spazio dedicato al tuo cane</td>
-                        <td>40£</td>
-                        <td><img src=""></td>
-                    </tr>
-                    <tr>
-                        <td>Primissima</td>
-                        <td>Prima fila, formato capanna tre posti</td>
-                        <td>50£</td>
-                        <td><img src=""></td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrizione</th>
+                            <th>Prezzo</th>
+                            <th>Disponibilità</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Love Dogs</td>
+                            <td>Due lettini, con spazio dedicato al tuo cane</td>
+                            <td>40 $</td>
+                            <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/yes.png" alt="disponibilità.png"></td>
+                        </tr>
+                        <tr>
+                            <td>Love Dogs</td>
+                            <td>Due lettini, con spazio dedicato al tuo cane</td>
+                            <td>40 $</td>
+                            <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/yes.png" alt="disponibilità.png"></td>
+                        </tr>
+                        <tr>
+                            <td>Love Dogs</td>
+                            <td>Due lettini, con spazio dedicato al tuo cane</td>
+                            <td>40 $</td>
+                            <td><img src="http://diiorio.nws.cs.unibo.it/twe/resources/2406a/no.png" alt="disponibilità.png"></td>
+                        </tr>
+                    </tbody>
                 </table>
-                <h1>Calcola il tuo preventivo e prenota!</h1>
                 <div>
+                    <h1>Prenota e calcola il tuo preventivo!</h1>
                     <div>
-                        <label>Postazione</label>
-                    </div>
-                    <div>
+                        <label>Nome</label>
                         <select>
-                            <option>Standard</option>
-                            <option selected>Love Dogs</option>
-                            <option>Primissima</option>
+                            <option>Love Dogs</option>
                         </select>
-                    </div>
-                    <div>
                         <label>Giorni</label>
-                    </div>
-                    <div>
                         <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option selected>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
+                            <option>4</option>
                         </select>
-                    </div>
-                    <div>
-                        <label>Client</label>
-                    </div>
-                    <div>
+                        <label>Cliente</label>
                         <input type="text">
                     </div>
+                    <button>Prenota</button>
                 </div>
-                <button>Prenota</button>
-            </div>
-        </div>
-        <div>
-            <div>
-                <label>160 £</label>
+                <div>
+                    <div>
+                        <span>160 $</span>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
