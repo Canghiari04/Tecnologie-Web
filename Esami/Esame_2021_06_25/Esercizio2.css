@@ -1,92 +1,88 @@
-html, body {
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
+body, html {
+    max-width: 100vw;
+    max-height: 100vh;
+    padding: 0;    
     margin: 0;
     overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "menu article1 article1 article2 article3"
-    "menu article1 article1 article4 article5";
-    width: 100vw;
-    height: auto;
-    padding-left: 1rem;
+body>div {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
     gap: 1rem;
 }
 
-#div-menu {
-    width: 100%;
-    height: 100%;
-    grid-area: menu;
+body>div>div:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    gap: 0.5rem;
+    padding-left: 0.25rem;
 }
 
-#div-menu>div {
+body>div>div:nth-of-type(1)>p {
+    font-weight: bold;
+}
+
+body>div>div:nth-of-type(1)>span {
     padding: 1rem;
-    margin-top: 0.5rem;
-    background-color: rgb(57, 143, 44, 0.1);
+    font-weight: bold;
+    background-color: rgb(57, 143, 44, 0.1)
 }
 
-#div-menu>div:hover {
+body>div>div:nth-of-type(1)>span:hover {
     color: white;
     text-decoration: underline;
     background-color: rgb(57, 143, 44);
 }
 
-a {
-    text-decoration: none !important;
+body>div>div:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    "main-div div-first div-second"
+    "main-div div-third div-fourth";
+    width: 80%;
+    gap: 0.5rem;
 }
 
-#div-article-1 {
-    display: flex;
-    flex-direction: column;
-    grid-area: article1;
-    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/cetrioli.jpg);
+body>div>div:nth-of-type(2)>div {
     background-size: cover;
 }
 
-#div-article-2 {
-    grid-area: article2;
-    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/rasaerba.jpg);
-    background-size: cover;
+body>div>div:nth-of-type(2)>div:nth-of-type(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    max-width: 100%;
+    height: 100%;
 }
 
-#div-article-3 {
-    grid-area: article3;
-    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/decespugliatore.jpg);
-    background-size: cover;
-}
-
-#div-article-4 {
-    grid-area: article4;
-    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/casetta.jpg);
-    background-size: cover;
-}
-
-#div-article-5 {
-    grid-area: article5;
-    background-image: url(http://diiorio.nws.cs.unibo.it/twe/resources/2406b/immagini/asparagi.jpg);
-    background-size: cover;
-}
-
-p {
-    padding: 1rem;
+body>div>div:nth-of-type(2)>div:nth-of-type(1)>p {
+    width: 100%;
+    height: auto;
     margin: 0;
+    padding: 1rem;
+    font-size: 24pt;
+    font-weight: bold;
     background-color: rgb(255, 255, 255, 0.5);
 }
 
-#span-article-1 {
-    color: black;
+body>div>div:nth-of-type(2)>div>p {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 18pt;
     font-weight: bold;
-    font-size: 30pt;
+    background-color: rgb(255, 255, 255, 0.5);
 }
 
-#span-article-2, #span-article-3, #span-article-4, #span-article-5 {
+a {
+    text-decoration: none;
     color: black;
-    font-weight: bold;
-    font-size: 20pt;
 }

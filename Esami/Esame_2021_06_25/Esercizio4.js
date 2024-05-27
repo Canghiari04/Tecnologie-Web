@@ -1,24 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementsByTagName("button")[0].addEventListener("click", function() {
-        document.getElementsByTagName("button")[0].disabled = true;
-        document.getElementById("p-timer").style.visibility = "visible";
+    document.getElementById("button-start").addEventListener("click", function() {
+        document.getElementById("button-start").disabled = true;
 
-        showTime(parseInt(document.getElementsByTagName("input")[0].value));
-    });        
+        var time = document.getElementById("input-time").value;
+
+        var output = document.getElementById("output-time");
+        output.style.visibility = "visible";
+
+        var timer = setInterval(function() {
+            output.innerHTML = time;
+
+            if(time > 0) {
+                time--;
+            } else {
+                output.innerHTML = "Fatto!"
+                document.getElementById("button-start").disabled = false;
+                clearInterval(timer);
+            }
+        }, 1000);
+    })
 });
-
-function showTime(second) {
-    var timer = setInterval(function() {
-        document.getElementById("p-timer").innerHTML = second;
-
-        if(second > 0) {
-            second--;
-        } else {
-            document.getElementById("p-timer").innerHTML = "Fatto!";
-            document.getElementsByTagName("button")[0].disabled = false;
-
-            /* fondamentale, altrimenti dopo la prima computazione alterna "Fatto!" con il nuovo input di secondi dato */
-            clearInterval(timer);
-        }
-    }, 1000);
-}

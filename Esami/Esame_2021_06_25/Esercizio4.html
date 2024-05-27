@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            body, html {
+            body,html {
+                display: flex;
+                flex-direction: column;
                 width: 100vw;
                 height: 100vh;
-                padding: 0;
+                padding: 1rem;
                 margin: 0;
-                font-size: 14pt;
             }
 
-            body>div {
+            div {
+                display: flex;
+                flex-direction: column;
                 width: 20%;
-                padding: 1rem;
             }
 
             p {
-                width: 100%;
+                text-align: left;
+                font-size: 20pt;
             }
         </style>
         <script src="Esercizio4.js"></script>
     </head>
     <body>
         <div>
-            <label>Parti da: <input type="number" min="0"> secondi.</label>
-            <div>
-                <button>Avvia</button>
-            </div>
-            <p id="p-timer" style="visibility: hidden;">
-                
-            </p>
+            <input id="input-time" type="number" min="0">
+            <button id="button-start">Avvia</button>
         </div>
+        <p id="output-time" style="visibility: hidden">NaN</p>
     </body>
 </html>
