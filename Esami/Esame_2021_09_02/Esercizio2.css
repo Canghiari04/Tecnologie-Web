@@ -1,0 +1,148 @@
+body, html {
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+	font-family: sans-serif;
+}
+
+body>nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0.25rem;
+	gap: 1rem;
+	border-bottom: 3px solid black;
+	color: grey;
+	font-weight: bold;
+}
+
+body>nav>img {
+	width: 10%;
+}
+
+body>nav>div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 40%;
+	gap: 2rem;
+}
+
+body>nav>div>span:nth-of-type(4) {
+	padding: 0.5rem 1rem 0.1rem 5rem;
+	border: 2px solid grey;
+}
+
+body>div {
+	text-align: center;
+	width: 100%;
+}
+
+body>div>h1 {
+	font-size: 50pt;
+}
+
+body>div>span {
+	padding: 0.25rem;
+	border-radius: 5px;
+	color: white;
+	background-color: black;
+}
+
+body>div>div:nth-of-type(1) {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	width: 90%;
+	padding: 2rem;
+	margin: auto;
+	gap: 2rem;
+}
+
+body>div>div:nth-of-type(1)>span {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.25rem 0.25rem 0.25rem 2rem;
+	border-radius: 5px;
+	border: 4px solid black;
+	font-weight: bold;
+}
+
+body>div>div:nth-of-type(1)>span:nth-of-type(12) {
+	justify-content: center;
+	padding: 0.25rem;
+	color: white;
+	text-decoration: underline;
+	background-color: black;
+}
+
+body>div>div:nth-of-type(1)>span>img {
+	width: 25%;
+}
+
+body>div>div:nth-of-type(2) {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 90%;
+	padding: 2rem;
+	margin: auto;
+}
+
+body>div>div:nth-of-type(2)>span {
+	justify-content: center;
+	padding: 0.25rem;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+body>div>div:nth-of-type(3) {
+	text-align: left;
+	width: 100%;
+	padding: 2rem;
+	border-top: 4px solid black;
+}
+
+body>div>div:nth-of-type(3)>span:nth-of-type(1) {
+	padding-left: 7.5rem;
+	font-weight: bold;
+}
+
+body>div>div:nth-of-type(3)>p {
+	text-align: center;
+	width: 90%;
+	justify-content: center;
+	padding: 1rem;
+	margin: auto;
+	margin-top: 1rem;
+	background-color: green;
+	opacity: 0.5;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+body>div>div:nth-of-type(4) {
+	display: grid;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr;
+	width: 80%;
+	padding: 2rem;
+	margin: auto;
+	gap: 2rem;
+}
+
+body>div>div:nth-of-type(4)>div {
+	width: 100%;
+	height: 500px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
