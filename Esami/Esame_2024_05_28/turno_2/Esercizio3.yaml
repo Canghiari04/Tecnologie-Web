@@ -1,0 +1,109 @@
+swagger: "2.0"
+info: 
+  title: "Esercizio 3 Esame 28/05/2024"
+  description: "API per la gestione di stabilimenti balneari"
+  version: 1.0.0
+paths:
+  /stabilimenti/{idStabilimento}/ombrelloni:
+    get:
+      description: "Get di tutti gli ombrelloni che possono ospitare animali"
+      operationId: getOmbrelloniByAnimali
+      parameters:
+        - in: path
+          required: true
+          name: idStabilimento
+          type: integer
+          format:  int32
+        - in: query
+          required: true
+          name: animali
+          type: boolean
+      responses:
+        '200': 
+          description: "Success"
+          schema:
+            type: array
+            items: 
+              type: object
+              $ref: "#/definitions/Ombrellone"
+        '400':
+          description: "Failed parametri in input non corretti"
+  /stabilimenti/{idStabilimento}/ombrelloni/{idOmbrellone}:
+    put:
+      description: "Update della superficie di un ombrellone"
+      operationId: updateSuperficieOmbrellone
+      parameters:
+        - in: path
+          required: true
+          name: idStabilimento
+          type: integer
+          format:  int32
+        - in: path
+          required: true
+          name: idOmbrellone
+          type: integer
+          format:  int32
+        - in: body
+          required: true
+          name: nuovaSuperficie
+          schema: 
+            type: integer
+            format: int32
+            example: 6
+      responses:
+        '200': 
+          description: "Success"
+        '400':
+          description: "Failed parametri in input non corretti"
+    delete:
+      description: "Delete di un ombrellone"
+      operationId: deleteOmbrellone
+      parameters:
+        - in: path
+          required: true
+          name: idStabilimento
+          type: integer
+          format:  int32
+        - in: path
+          required: true
+          name: idOmbrellone
+          type: integer
+          format:  int32
+      responses:
+        '200': 
+          description: "Success"
+        '400':
+          description: "Failed parametri in input non corretti"
+definitions:
+  Stabilimento:
+    type: object
+    required:
+      - idStabilimento
+      - nomeStabilimento
+    properties:
+      idStabilimento:
+        type: integer
+        format: int32
+        example: 256
+      nomeStabilimento:
+        type: string
+        example: "Dune Beach"
+  Ombrellone:
+    type: object
+    required: 
+      - idOmbrellone
+      - superficie
+      - animali
+    properties: 
+      idOmbrellone:
+        type: integer
+        format: int32
+        minimum: 1
+        example: 7
+      superficie:
+        type: integer
+        format: int32
+        example: 5
+      animali:
+        type: boolean
+        example: true

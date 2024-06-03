@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body, html {
+                width: 100vw;
+                height: 100vh;
+                padding: 0;
+                margin: 0;
+            }
+
+            div {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 35%;
+                margin: auto;
+                gap: 1rem;
+            }
+
+            div>input, div>button {
+                grid-column: 1 / span 2;
+            }
+
+            div>div {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+        </style>
+        <script src="Esercizio2.js"></script>
+    </head>
+    <body>
+        <div>
+            <input id="importo" type="number" placeholder="Importo da convertire">
+            <div>
+                <span>Valuta di partenza</span>
+                <select id="valuta-partenza">
+                    <option>EUR</option>
+                    <option>USD</option>
+                </select>
+            </div>
+            <div>
+                <span>Valuta di destinazione</span>
+                <select id="valuta-destinazione">
+                    <option>EUR</option>
+                    <option>USD</option>
+                </select>
+            </div>
+            <span>Tasso di cambio EUR</span>
+            <input id="tasso-eur" type="number">
+            <span>Tasso di cambio USD</span>
+            <input id="tasso-usd" type="number">
+            <button>Submit</button>
+            <span id="risultato">Risultato: </span>
+        </div>
+    </body>
+</html>
