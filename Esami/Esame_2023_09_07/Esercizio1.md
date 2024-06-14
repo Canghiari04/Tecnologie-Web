@@ -1,41 +1,32 @@
 # Domande di base
 
-### A. Come si ottiene un effetto trasparenza in CSS?
+## 1 - CSS 
+Un effetto trasparenza si ottiene in CSS attraverso l'utilizzo della proprietà __opacity__. Un esempio di quando detto può essere dimostrato come segue: 
 
-### Risposta
-Un effetto __trasparenza__ in CSS si ottiene combinando la proprietà, assieme al proprio attributo, __opacity__. \
-Un esempio è dato da: \
-opacity: 0.5;
+selettore { \
+&ensp;opacity: 0.5; \
+}
 
-### B. Quanti Byte sono necessari per rappresentare le seguenti parole in UTF-8?
+## 2 - Codifica caretteri
+__UTF-8__ è uno standard di codifica che utilizza una struttura variabile, ossia non codifica un carattere in maniera univoca utilizzando sempre lo stesso numero di Byte, ma in base alla tipologia distingue il numero di bit da destinare per la codifica.
+Esso distingue quattro gruppi principali, a seconda del carattere, pur di garantire una corretta codifica, suddivisi in:
+* __ASCII__, tutti i caratteri inclusi nello standard a lunghezza fissa occupano __1 Byte__
+* __Latini__, occupano un totale di __2 Byte__
+* __Ideogrammi__, occupano __3 Byte__
+* Per qualsiasi altro carattere sono destinati un totale di __4 Byte__, la lunghezza massima per la codifica __UTF-8__
 
-### Risposta
-* __brood__ => 5 Byte \
-* __pan__ => 3 Byte
+## 3 - URI
+__URI__ è l'acronimo di __Uniform Resource Identifier__, ossia un identificativo univoco per poter identificare una determinata risorsa. Tipicamente utilizzato in contesti __client-server__, dove, rispettivamente, il primo formula la richiesta per ottenere la risorsa, specificandone l'__URI relativo__ oppure __assoluto__, mentre il secondo attore, possessore della risorsa desiderata, restituisce una risposta descrivendo l'esito della richiesta.
 
-### C. Fornire una breve spiegazione di cosa sia un URI e da quali componenti è composto.
+Un URI si fonda su una specifica struttura, cosi suddivisa:
+* __authority__, definisce l'organizzazione a cui i nomi sono delegati
+* __path__, parte identificativa della risorsa nello spazio dei nomi
+* __query__, specifica della risorsa, definisce dettagliatamente le caratteristiche che debba possedere la risorsa
+* __fragment__, rappresenta una sezione della risorsa
 
-### Risposta
-Un __URI__, acronimo di __Uniform Resource Identifier__, definisce un identificativo univoco di una risorsa, posta all'interno di un servizio. Un URI per definizione è sia un __URL__, __Uniform Resource Locator__, che un __URN__, __Uniform Resource Name__; il primo è attuato tipicamente in ambito del protocollo di rete IP, poichè coincide con un indirizzo di rete, mentre il secondo stabilisce una stringa, anch'essa unica, registrata presso l'ente IANA. Un __URN__ è di difficile utilizzo, infatti spesso l'insieme di caratteri è convertito nel corrispettivo indirizzo di rete, rendendo la risorsa acquisibile e manipolabile. 
+## 4 - REST API
+Un'__API__ definisce un'interfaccia dedita a fornire una risposta dinnanzi a delle richieste. Rappresenta l'insieme dell'azioni che possano essere adottate mediante un servizio esterno. Un'API è detta __RESTful__ se e solo se si fonda su due caratterizzazioni fondamentali, cosi descritte:
+* Il naming delle risorse avviene mediante __URI__
+* Il protocollo di trasporto utilizzato è __HTTP__
 
-Un __API REST__ adotta una suddivisione specifica delle risorse. L'insieme di risorse è denominato __collezione__, mentre la singola risorsa è chiamata __individuo__; si ricorda che con il termine risorsa è descritta una qualsiasi entità, come ad esempio un file, una query per interrogare un database oppure l'estrapolazione di parametri utili.
-
-Dato l'esempio sottostante, si individuano le componenti principali. \
-__https://www.governmentissues.com:8080/files/documents/bills?query=ministry#first__
-
-* __https://__ => definisce lo __schema__ dell'URI \
-* __www.govermentissues.com:__ => entità dell'__authority__, tale componente coincide con la sezione __host__ \
-* __8080/__ => __porta__ dell'URI, componente dell'__authority__ \
-* __files/documents/bills__ => __path__, ossia il percorso della risorsa all'interno dell'Origin Server \
-* __?query=ministry__ => sezione __query__ del __path__, il quale identifica con maggiore specificità la risorsa richiesta \
-* __#first__ => __fragment__, risorsa secondaria connessa alla risorse primaria desiderata
-
-### D. Descrivere, nel contesto di una REST API, la gerarchia delle collezioni. Fornire un esempio con tre livelli utilizzando filtri.
-
-### Risposta
-Un __API__ rappresenta un'interfaccia di un servizio, la quale esplicita quali funzioni e comportamenti siano conseguibili, per tutti coloro che effettuino una richiesta; pertanto, un __API WEB__, definisce un'interfaccia di un Server che mette a disposizione risorse e comportamenti sulle stesse, per tutti i Client che effettuino una richiesta da remoto. Un __API__ è __REST__ se rispetta determinate caratteristiche, quali:
-* sfrutta il protocollo di trasporto __HTTP__
-* utilizza il resource naming definito da __URI__
-
-Esempio può essere stabilito come segue. \
-GET /documents/owners/tecnologie-web/?query="REST-API"
+L'utilizzo di HTTP e URI è necessario affinchè le API create siano ritenute __ben fatte__.
