@@ -1,0 +1,59 @@
+body, html {
+	width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+	font-family: sans-serif;
+}
+
+body>div {
+	width: 35%;
+	padding: 1rem;
+	margin: auto;
+	border: 1px solid lightgrey;
+}
+
+body>div>div:nth-of-type(1) {
+	display: flex;
+	flex-direction: column;
+}
+
+body>div>div>h2 {
+	padding: 1rem 0rem 1rem 2rem;
+	margin: 0;
+	border-bottom: 1px solid lightblue;
+}
+
+body>div>div>label {
+	display: flex;
+	padding: 0.5rem;
+	border-bottom: 1px solid lightblue;
+	gap: 0.5rem;
+}
+
+body>div>div>label:nth-of-type(1) {
+	display: flex;
+	justify-content: space-between;
+}
+
+body>div>div>label:nth-of-type(1)>span {
+	color: grey;
+	text-decoration: underline;
+}
+
+body>div>div:nth-of-type(2) {
+	display: flex;
+	width: 100%;
+	margin-top: 0.5rem;
+	gap: 0.5rem;
+}
+
+body>div>div:nth-of-type(2)>input {
+	width: 85%;
+	padding: 0.5rem;
+}
+
+body>div>div:nth-of-type(2)>button {
+	width: 15%;
+	padding: 0.5rem;
+}
