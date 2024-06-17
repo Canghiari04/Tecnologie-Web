@@ -1,0 +1,38 @@
+body, html {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body>div {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: auto;
+    gap: 0.5rem;
+}
+
+body>div>span {
+    width: 100%;
+    font-size: 13pt;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+
+body>div>textarea {
+    width: 90%;
+    height: 125px;
+    padding: 1rem;
+    margin: auto;
+    font-size: 12pt;;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+
+body>div>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
