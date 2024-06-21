@@ -10,28 +10,28 @@ body>div {
 	max-width: 100%;
 }
 
-nav {
+body>nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: red;
 	padding: 1rem;
 	overflow-x: hidden;
+	background-color: red;
 }
 
-nav>img {
+body>nav>img {
 	width: 10%;
 }
 
-nav>div {
+body>nav>div {
 	display: flex;
 	gap: 1rem;
 }
 
-nav>div>span {
+body>nav>div>span {
 	font-size: 14pt;
-	color: white;
 	font-weight: bold;
+	color: white;
 	text-transform: uppercase;
 }
 
@@ -51,21 +51,21 @@ body>div>div:nth-of-type(1)>span {
 
 body>div>div:nth-of-type(1)>span>span {
 	position: absolute;
-	color: white;
-	background-color: rgb(0,0,0,0.5);
 	width: 80%;
 	padding: 2rem;
-	border-left: 2px solid red;
 	bottom: 2.5rem;
 	font-weight: bold;
+	color: white;
+	border-left: 2px solid red;
+	background-color: rgb(0,0,0,0.5);
 }
 
 body>div>div:nth-of-type(2) {
 	display: flex;
-	overflow-x: scroll;
-	gap: 0.25rem;
-	margin-top: 3rem;
 	width: 100%;
+	margin-top: 3rem;
+	gap: 0.25rem;
+	overflow-x: scroll;
 }
 
 body>div>div:nth-of-type(2)>span {
@@ -83,12 +83,11 @@ body>div>div:nth-of-type(2)>span>span {
 	font-size: 9pt;	
 }
 
-a {
-	text-decoration: none;
-	color: black;
-}
-
 body>div>div:nth-of-type(2)>span>img:hover {
 	filter: brightness(50%);
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
