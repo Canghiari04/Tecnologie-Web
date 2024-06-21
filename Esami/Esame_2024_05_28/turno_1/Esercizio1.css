@@ -1,93 +1,94 @@
-body, html {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    overflow-x: hidden;
-    font-family: sans-serif;
+body {
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	overflow-x: hidden;
 }
 
-body>nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 1rem 0rem 1rem 0rem;
-    background-color: red;
+body>div {
+	max-width: 100%;
 }
 
-body>nav>span>img {
-    width: 50%;
-    margin-left: 1.25rem;
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: red;
+	padding: 1rem;
+	overflow-x: hidden;
 }
 
-body>nav>div>span {
-    margin-right: 1.25rem;
-    font-weight: bold;
-    color: white;
+nav>img {
+	width: 10%;
 }
 
-body>div:nth-of-type(1) {
-    display: grid;
-    grid-template-columns: 50% 25% 25%;
-    width: 100%;
-    height: 50%;
+nav>div {
+	display: flex;
+	gap: 1rem;
 }
 
-body>div:nth-of-type(1)>span {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
+nav>div>span {
+	font-size: 14pt;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
-body>div:nth-of-type(1)>span>p {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    bottom: 5rem;  
+body>div>div:nth-of-type(1) {
+	display: grid;
+	grid-template-columns: 50% 25% 25%;
+	gap: 0rem;
+	overflow-x: hidden;
 }
 
-body>div:nth-of-type(1)>span>p>span {
-    padding: 2rem;
-    font-weight: bold;
-    color: white;
-    border-left: 2px solid red;
-    background-color: rgb(0, 0, 0, 0.5);
+body>div>div:nth-of-type(1)>span {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	width: 100%;
 }
 
-body>p {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    margin: 0;
+body>div>div:nth-of-type(1)>span>span {
+	position: absolute;
+	color: white;
+	background-color: rgb(0,0,0,0.5);
+	width: 80%;
+	padding: 2rem;
+	border-left: 2px solid red;
+	bottom: 2.5rem;
+	font-weight: bold;
 }
 
-body>p>span:nth-of-type(1) {
-    padding-left: 0.25rem;
-    font-size: 14pt;
-    font-weight: bold;
-    border-left: 4px solid red;
+body>div>div:nth-of-type(2) {
+	display: flex;
+	overflow-x: scroll;
+	gap: 0.25rem;
+	margin-top: 3rem;
+	width: 100%;
 }
 
-body>p>span:nth-of-type(2) {
-    color: blue;
-    font-weight: bold;
+body>div>div:nth-of-type(2)>span {
+	width: 250px;
+	padding: 0.25rem;
 }
 
-body>div:nth-of-type(2) {
-    display: flex;
-    overflow-x: scroll;
-    width: 100%;
-    height: 300px;
-    padding: 1rem;
-    gap: 1rem;
+body>div>div:nth-of-type(2)>span>img {
+	width: 100%;
+	height: 250px;
+	border-radius: 10%;
 }
 
-body>div:nth-of-type(2)>img {
-    border-radius: 15px;
+body>div>div:nth-of-type(2)>span>span {
+	font-size: 9pt;	
 }
 
-body>div:nth-of-type(2)>img:hover {
-    filter: brightness(75%);
+a {
+	text-decoration: none;
+	color: black;
 }
+
+body>div>div:nth-of-type(2)>span>img:hover {
+	filter: brightness(50%);
+}
+

@@ -1,58 +1,63 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("button-add").addEventListener("click", function() {        
-        var input = document.createElement("input");
+document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("button-aggiungi").addEventListener("click", function() {
+		var elemento = document.getElementById("input-elemento").value;	
+		
+		var testo = document.createTextNode(elemento);
+		
+		var input = document.createElement("input");
+		
+		var type = document.createAttribute("type");
+		type.value = "checkbox";
+		var id = document.createAttribute("id");
+		id.value = elemento;
+		var f = document.createAttribute("onchange");
+		f.value = "changeTextDecoration(id)";
+		
+		input.setAttributeNode(type);
+		input.setAttributeNode(id);
+		input.setAttributeNode(f);
+		
+		var span = document.createElement("span");
+		
+		var id_span = document.createAttribute("id");
+		id_span.value = elemento;
+		
+		span.setAttributeNode(id_span);
+		
+		span.appendChild(input);
+		span.appendChild(testo);
+		
+		document.getElementById("p-checkbox").appendChild(span);
+	});
 
-        var idInput = document.createAttribute("id");
-        idInput.value = document.getElementById("input-text").value;
-        
-        var type = document.createAttribute("type");
-        type.value = "checkbox";
-
-        var fun = document.createAttribute("onclick");
-        fun.value = "checkTask(id)";
-        
-        input.setAttributeNode(idInput);
-        input.setAttributeNode(type);
-        input.setAttributeNode(fun);
-
-        var label = document.createElement("label");
-
-        var idLabel = document.createAttribute("id");
-        idLabel.value = document.getElementById("input-text").value;
-
-        label.setAttributeNode(idLabel);
-
-        label.appendChild(input);
-        label.appendChild(document.createTextNode(document.getElementById("input-text").value));
-
-        document.getElementById("div-checkbox").appendChild(label);
-    })
-
-    document.getElementById("button-delete").addEventListener("click", function() {        
-        var checked = new Array();
-        var inputs = document.getElementsByTagName("input");
-
-        for(let i = 0; i < inputs.length; i++) {
-            if(inputs[i].type == "checkbox" && inputs[i].checked == true) {
-                checked.push(inputs[i].id)
-            }
-        }
-
-        var labels = document.getElementsByTagName("label");
-
-        for(let i = 0; i < checked.length; i++) {
-            var label = labels.namedItem(checked[i]);
-            document.getElementById("div-checkbox").removeChild(label);
-        }
-    })
+	document.getElementById("button-elimina").addEventListener("click", function() {
+		var checkbox_checked = new Array();
+		
+		var spans = document.getElementsByTagName("span");
+		var checkBoxes = document.getElementsByTagName("input")
+		
+		for(let i = 0; i < spans.length; i++) {
+			var checkbox = checkBoxes.namedItem(spans[i].id);
+			
+			if(checkbox.checked) {
+				var span = spans.namedItem(spans[i].id);
+				checkbox_checked.push(span);
+			}
+		}
+		
+		for(var index in checkbox_checked) {		
+			document.getElementById("p-checkbox").removeChild(checkbox_checked[index]);
+		}
+	});
 });
 
-function checkTask(id) {
-    var labels = document.getElementsByTagName("label");
-    var label = labels.namedItem(id);
-
-    var style = document.createAttribute("class");
-    style.value = "checked-list";
-
-    label.setAttributeNode(style);
+function changeTextDecoration(id) {
+	var spans = document.getElementsByTagName("span");
+	
+	var span = spans.namedItem(id);
+	
+	var style = document.createAttribute("style")
+	style.value = "text-decoration: line-through;";
+	
+	span.setAttributeNode(style);
 }

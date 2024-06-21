@@ -1,64 +1,62 @@
 swagger: "2.0"
-info: 
-  title: Esercizio 3 Esame 28/05/2024
-  description: API per la gestione del giro d'Italia
-  version: 1.0.0
+info:
+  title: "Esercizio 3 Esame 28/05/2024"
+  description: "API per la gestione del Giro d'Italia"
+  version: "1.0.0"
 paths:
-  /giro/edizione/{idEdizione}/tappe:
+  /edizione/{annoEdizione}/tappe:
     get:
-      description: "Get di tutte le tappe con una certa lunghezza"  
-      operationId: getTappeFromEdizione
+      description: "Elenco di tutte le tappe di un'edizione che abbiano una certa lunghezza"
+      operationId: getTappeFromEdizioneAndLunghezza
       parameters:
         - in: path
           required: true
-          name: idEdizione
+          name: annoEdizione
           type: integer
           format: int32
         - in: query
-          required: false
-          name: lunghezzaTappe
+          required: true
+          name: maxLunghezza
           type: integer
           format: int32
       responses:
         200:
-          description: "Success tappe individuate"
+          description: "Success"
           schema:
             type: array
-            items: 
+            items:
               $ref: "#/definitions/Tappa"
         400:
           description: "Failed parametri in input non corretti"
-    post: 
-      description: "Add di una tappa all'edizione"
-      operationId: "AddTappa"
-      parameters: 
-        - in: path 
+    post:
+      description: "Aggiungere una tappa ad un'edizione"
+      operationId: addTappaEdizione
+      parameters:
+        - in: path
           required: true
-          name: idEdizione
+          name: annoEdizione
           type: integer
           format: int32
         - in: body
           required: true
           name: nuovaTappa
-          schema: 
-            type: object
+          schema:
             $ref: "#/definitions/Tappa"
       responses:
         200:
-          description: "Success tappa aggiunta"
-          schema: 
-            type: object
+          description: "Success"
+          schema:
             $ref: "#/definitions/Tappa"
         400:
           description: "Failed parametri in input non corretti"
-  /giro/edizione/{idEdizione}:
+  /edizione/{annoEdizione}:
     put:
-      description: "Update data di fine di un'edizione"
-      operationId: updateDataFineTappa
-      parameters: 
-        - in: path 
+      description: "Aggiornare la data fine di un'edizione"
+      operationId: updateDataFineEdizione
+      parameters:
+        - in: path
           required: true
-          name: idEdizione
+          name: annoEdizione
           type: integer
           format: int32
         - in: body
@@ -67,52 +65,51 @@ paths:
           schema:
             type: string
             format: date
-            example: "18/05/2024"
+            example: "2024-06-30"
       responses:
         200:
-          description: "Success data di fine aggiornata"
-        400: 
+          description: "Success"
+        400:
           description: "Failed parametri in input non corretti"
-definitions: 
+definitions:
   Edizione:
     type: object
     required:
-      - id
+      - anno
       - dataInizio
       - dataFine
-      - tappe
+      - listaTappe
     properties:
-      id:
+      anno:
         type: integer
         format: int32
         example: 2024
       dataInizio:
         type: string
-        format: date 
-        example: "16/05/2024"
+        format: date
+        example: "2024-05-29"
       dataFine:
         type: string
-        format: date 
-        example: "16/06/2024"
-      tappe:
+        format: date
+        example: "2024-06-29"
+      listaTappe:
         type: array
         items:
           $ref: "#/definitions/Tappa"
   Tappa:
     type: object
-    required: 
+    required:
       - id
-      - nome 
+      - nome
       - lunghezza
-    properties: 
+    properties:
       id: 
         type: integer
         format: int32
         example: 1
       nome: 
         type: string
-        example: "Rimini-Bologna"
+        example: "Rimini - Firenze"
       lunghezza:
         type: integer
-        format: int32
         example: 201

@@ -1,19 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="Esercizio2.css">
-        <script src="Esercizio2.js"></script>
-    </head>
-    <body>
-        <div>
-            <div id="div-checkbox">
-                
-            </div>
-            <div>
-                <input id="input-text" type="text" placeholder="Aggiungi un elemento">
-                <button id="button-add">Aggiungi</button>
-                <button id="button-delete">Elimina</button>
-            </div>
-        </div>
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			body {
+				width: 100vw;
+				margin: 0;
+				padding: 0;
+				font-family: sans-serif;
+			}
+			
+			body>div {
+				width: 20%;
+					margin: auto;
+				padding: 1rem;
+				background-color: rgb(0,0,0,0.75)
+			}
+			
+			body>div>p {
+				display: flex;
+				flex-direction: column;
+				margin: 1rem;
+				gap: 0.5rem;
+				color: white;
+			}
+			
+			body>div>p>span>input {
+				margin-right: 1rem;
+			}
+			
+			body>div>div {
+				display: flex;
+				flex-direction: column;
+				width: 90%;
+				padding-left: 2rem;
+				gap: 1rem;
+			}
+			
+			input[type="text"] {
+				color: white;
+				padding: 1rem;
+				background-color: black;
+				border: 2px solid lightblue;
+				border-radius: 2px;
+			}
+			
+			#button-aggiungi {
+				background-color: lightblue;
+				padding: 0.25rem;
+				border: 2px solid lightblue;
+				border-radius: 5px;
+			}
+			
+			#button-elimina {
+				background-color: black;
+				padding: 0.25rem;
+				border: 2px solid white;
+				border-radius: 5px;
+				color: white;
+			}
+		</style>
+		<script src="Esercizio2.js"></script> 
+	</head>
+	<body>
+		<div>
+			<p id="p-checkbox">
+				
+			</p>
+			<div>
+				<input type="text" id="input-elemento" placeholder="Aggiungi un elemento">
+				<div>
+					<button id="button-aggiungi">Aggiungi</button>
+					<button id="button-elimina">Elimina</button>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
