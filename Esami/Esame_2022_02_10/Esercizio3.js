@@ -1,99 +1,89 @@
 document.addEventListener("DOMContentLoaded", function() {
-    getNews();
-    getTopics();
-})
+	addNotizie("http://diiorio.nws.cs.unibo.it/twe/api/eu/news.php");
+	addEventi("http://diiorio.nws.cs.unibo.it/twe/api/eu/topics.php");
+});
 
-function getNews() {
-    var request = new XMLHttpRequest();
-    request.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/eu/news.php", true);
-    request.onload = () => {
-        (request.status === 200) ? (addNews(request.response)) : (console.error("Errore durante la richiesta"));
-    }
-
-    request.send();
+function addNotizie(URI) {
+	var request = new XMLHttpRequest();
+	
+	request.open("GET", URI, true);
+	request.send();
+	
+	request.onload = () => {
+		if(request.status === 200) {
+			var tokens = JSON.parse(request.response);
+			var news = tokens["news"];
+			
+			for(var index in news) {
+				var span_comunicato = document.createElement("span");
+				span_comunicato.innerHTML = `${news[index]["type"]} | ${news[index]["date"]}`;
+				
+				var style = document.createAttribute("style");
+				style.value = "text-transform: uppercase";
+				
+				span_comunicato.setAttributeNode(style);
+				
+				var span_contenuto = document.createElement("span");
+				span_contenuto.innerHTML = `${news[index]["content"]}`;
+				
+				var p = document.createElement("p");
+				
+				p.appendChild(span_comunicato);
+				p.appendChild(span_contenuto);
+				
+				document.getElementById("div-notizie").appendChild(p);
+			}
+		} else {
+			console.error("Errore durante la richiesta");
+		}
+	}
 }
 
-function getTopics() {
-    var request = new XMLHttpRequest();
-    request.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/eu/topics.php", true);
-    request.onload = () => {
-        (request.status === 200) ? (addTopics(request.response)) : (console.error("Errore durante la richiesta"));
-    }
-
-    request.send();
+function addEventi(URI) {
+	var request = new XMLHttpRequest();
+	
+	request.open("GET", URI, true);
+	request.send();
+	
+	request.onload = () => {
+		if(request.status === 200) {
+			var events = JSON.parse(request.response);;
+			
+			for(var index in events) {
+				var span_tipo = document.createElement("span");
+				span_tipo.innerHTML = `${events[index]["label"]}`;
+				
+				var span_title = document.createElement("span");
+				span_title.innerHTML = `${events[index]["title"]}`;
+				
+				var p = document.createElement("p");
+				
+				var id = document.createAttribute("id");
+				id.value = span_tipo.innerHTML;
+				
+				var f = document.createAttribute("onclick");
+				f.value = "changeBackgroundColor(id)";
+				
+				p.setAttributeNode(id);
+				p.setAttributeNode(f);
+				
+				p.appendChild(span_tipo);
+				p.appendChild(span_title);
+				
+				document.getElementById("div-eventi").appendChild(p);
+			}
+		} else {
+			console.error("Errore durante la richiesta");
+		}
+	}
 }
 
-function addNews(response) {
-    var tokens = JSON.parse(response);
-
-    for(index in tokens) {
-        var items = tokens[index];
-
-        if(typeof(items) == "object") {
-            for(let i = 0; i <= (items.length - 1); i++) {
-                var divNews = document.getElementById("div-news");
-
-                var div = document.createElement("div");
-
-                var span = document.createElement("span");
-                span.innerHTML = items[i].type.toUpperCase() + items[i].date;
-
-                var a = document.createElement("a");
-
-                var href = document.createAttribute("href");
-                href.value = `/news/${items[i].id}`;
-
-                a.setAttributeNode(href);
-
-                var p = document.createElement("p");
-                p.innerHTML = items[i].content;
-
-                a.appendChild(p);
-
-                div.appendChild(span);
-                div.appendChild(a);
-
-                divNews.appendChild(div);
-            }
-        }
-    }
-}
-
-function addTopics(response) {
-    var tokens = JSON.parse(response);
-
-    for(index in tokens) {
-        var item = tokens[index];
-
-        var divTopics = document.getElementById("div-topics");
-
-        var a = document.createElement("a");
-
-        var div = document.createElement("div");
-
-        var click = document.createAttribute("onclick");
-        click.value = "changeColor()";
-
-        div.setAttributeNode(click);
-
-        var h2 = document.createElement("h2");
-        h2.innerHTML = item.label;
-
-        var p = document.createElement("p");
-        p.innerHTML = item.title;
-
-        div.appendChild(h2);
-        div.appendChild(p);
-            
-        a.appendChild(div);
-
-        divTopics.appendChild(a);
-    }
-}
-
-function changeColor() {
-    /* <--> */
-    var element = event.target;
-
-    (element.style.backgroundColor != "lightblue") ? (element.style.backgroundColor = "lightblue") : (element.style.backgroundColor = "white")
+function changeBackgroundColor(id) {
+	var p = document.getElementById(id);
+	
+	if(p.style.backgroundColor == "white") {
+		p.style.backgroundColor = "lightgrey";
+	} else {
+		p.style.backgroundColor = "white";
+	}
 }
