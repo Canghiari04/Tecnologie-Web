@@ -1,148 +1,144 @@
 swagger: "2.0"
-info: 
-  title: "API per la gestione di una scuola materna"
-  version: 1.0.0
+info:
+   title: "Esercizio 1 Esame 03/06/2021"
+   description: "API per la gestione di una scuola elementare"
+   version: 1.0.0
 paths:
-  /scuola/classi/:
-    get:
-      description: "Get di tutte le classi di un certo anno"
-      operationId: getClassiByAnno
-      parameters:
-        - in: query
-          required: true
-          name: annoClassi
-          type: integer
-          format: int32
-          enum: 
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-      responses:
-        '200':
-          description: "Success classi individuate"
-          schema:
+   /scuola/classi/:
+      get:
+         description: "Get di tutte le classi di un certo anno"
+         operationId: getClassiFromAnno
+         parameters:
+            - in: query
+              required: true
+              name: annoClasse
+              type: integer
+              format: int32
+         responses:
+            "200":
+               description: "Success"
+               schema:
+                  type: array
+                  items:
+                     $ref: "#/definitions/Classe"
+            "400":
+               description: "Failed parametri in input non corretti"
+   /scuola/classi/sezioni/{nomeSezione}/anni/{annoClasse}/alunni/:
+      post:
+         description: "Add di un alunno ad una classe"
+         operationId: addAlunnoAtClasse
+         parameters:
+            - in: path
+              required: true
+              name: nomeSezione
+              type: string
+              enum: 
+               - "A"
+               - "B"
+               - "C"
+            - in: path
+              required: true
+              name: annoClasse
+              type: integer
+              format: int32
+              enum: 
+               - 1 
+               - 2 
+               - 3
+               - 4 
+               - 5
+            - in: body
+              required: true
+              name: nuovoAlunno
+              schema:   
+               type: object
+               $ref: "#/definitions/Alunno"
+         responses:
+            "200":
+               description: "Success"
+               schema:
+                  type: object
+                  $ref: "#/definitions/Alunno"
+            "400":
+               description: "Failed parametri in input non corretti"
+   /scuola/classi/sezioni/{nomeSezione}/anni/{annoClasse}:
+      put:
+         description: "Add di un alunno ad una classe"
+         operationId: addAlunnoAtClasse
+         parameters:
+          - in: path
+            required: true
+            name: nomeSezione
+            type: string
+            enum: 
+               - "A"
+               - "B"
+               - "C"
+          - in: path
+            required: true
+            name: annoClasse
+            type: integer
+            format: int32
+            enum: 
+               - 1 
+               - 2 
+               - 3
+               - 4 
+               - 5
+          - in: body
+            required: true
+            name: nuovoGiudizio
+            schema:
+               type: string
+               example: "Classe migliorata durante il secondo quadrimestre"
+         responses:
+            "200":
+               description: "Success"
+            "400":
+               description: "Failed parametri in input non corretti"
+definitions:
+   Classe:
+      type: object
+      required:
+         - sezione
+         - anno
+         - giudizio
+         - alunni
+      properties:
+         sezione:
+            type: string
+            enum: 
+               - "A"
+               - "B"
+               - "C"
+            example: "C"
+         anno:
+            type: integer
+            format: int32
+            enum: 
+               - 1 
+               - 2
+               - 3
+               - 4 
+               - 5
+            example: 3
+         giudizio:
+            type: string
+            example: "Classe molto agitata"
+         alunni:
             type: array
             items:
-              type: object
-              $ref: "#/definitions/Classe"
-        '400':
-          description: "Failed parametri in input non corretti"
-  /scuola/classi/{sezioneClasse}/{annoClasse}:
-    post:
-      description: "Add di uno studente all'interno di una classe"
-      operationId: addStudente
-      parameters: 
-        - in: path
-          required: true
-          name: sezioneClasse
-          type: string
-          enum: 
-            - "A"
-            - "B"
-            - "C"
-            - "D"
-            - "E"
-        - in: path
-          required: true
-          name: annoClasse
-          type: integer
-          enum: 
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-        - in: body 
-          required: true
-          name: nuovoAlunno
-          schema:
-            type: object
-            $ref: "#/definitions/Alunno"
-      responses:
-        '200':
-          description: "Success alunno aggiunto alla classe"
-          schema: 
-            type: object
-            $ref: "#/definitions/Alunno"
-        '400':  
-          description: "Failed parametri in input non corretti"
-    put:
-      description: "Update giudizio di una classe"
-      operationId: updateGiudizio
-      parameters: 
-       - in: path
-         required: true
-         name: sezioneClasse
-         type: string
-         enum: 
-           - "A"
-           - "B"
-           - "C"
-           - "D"
-           - "E"
-       - in: path
-         required: true
-         name: annoClasse
-         type: integer
-         enum: 
-           - 1
-           - 2
-           - 3
-           - 4
-           - 5
-       - in: body 
-         required: true
-         name: nuovoGiudizio
-         schema:
-          type: string
-          example: "Classe molto movimentata."
-      responses:
-        '200':
-          description: "Success giudizio della classe aggiornato"
-        '400':
-          description: "Failed parametri in input non corretti"
-definitions:
-  Classe:
-    type: object
-    required:
-      - sezione
-      - anno
-      - giudizio
-    properties:
-      sezione:
-        type: string
-        enum: 
-          - "A"
-          - "B"
-          - "C"
-          - "D"
-          - "E"
-        example: "E"
-      anno:
-        type: integer
-        format: int32
-        enum: 
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-        example: 5
-      giudizio:
-        type: string
-        example: "Classe molto rumorosa."
-  Alunno:
-    type: object
-    required: 
-      - id
-      - nome
-    properties: 
-      id:
-        type: integer
-        format: int32
-        example: 7
-      nome: 
-        type: string
-        example: "Matteo Rossi"
+               $ref: "#/definitions/Alunno"
+   Alunno:
+      type: object
+      required:
+         - id
+         - nome
+      properties: 
+         id:
+            type: integer
+            format: int32
+            example: 7
+         nome:
+            type: string
+            example: "Matteo Rossi"

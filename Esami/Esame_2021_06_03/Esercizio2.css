@@ -1,102 +1,53 @@
-body, html {
-    max-width: 100vw;
-    max-height: 100vh;
-    padding: 0;
-    margin: 0;
+body {
+	width: 100vw;
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
 }
 
 body>div {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    height: auto;
+	width: 50%;
+	margin: auto;
 }
 
 body>div>div:nth-of-type(1) {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    margin: auto;
-    padding: 1rem;
+	width: 100%;
 }
 
-body>div>div:nth-of-type(1)>div:nth-of-type(1) {
-    text-align: center;
-    width: 50%;
-    padding: 1rem;
-    border-radius: 20px;
-    border: 1px solid black;
-}
-
-body>div>div:nth-of-type(1)>div:nth-of-type(2) {
-    text-align: center;
-    width: 50%;
-    padding: 1rem;
-    border-radius: 20px;
-    border: 1px solid black;
+body>div>div:nth-of-type(1)>div {
+	display: inline-block;
+	text-align: center;
+	width: 45%;
+	padding: 1rem;
+	border-radius: 15px;
+	border: 2px solid lightgrey;
 }
 
 body>div>div:nth-of-type(1)>div:hover {
-    background-color: lightyellow;
+	background-color: #FFDDAA;
 }
 
-span {
-    font-weight: bold;
+body>div>div:nth-of-type(1)>div>img {
+	width: 25%;
 }
 
-p {
-    text-align: right;
-    padding: 0.5rem;
-    font-size: 14pt;
-    background-color: lightgrey;
-    border-radius: 15px;
-}
-
-img {
-    width: 150px;
-    height: 150px;
+body>div>div:nth-of-type(1)>div>p {
+	text-align: right;	
+	padding: 0.25rem;
+	border-radius: 10px;
+	background-color: lightgrey;
 }
 
 body>div>div:nth-of-type(2) {
-    text-align: center;
-    margin: auto;
-    width: 50%;
+	text-align: center;
+	width: 100%;
 }
 
 body>div>div:nth-of-type(2)>div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 25%;
-    margin: auto;
+	margin-bottom: 2rem;
 }
 
-textarea {
-    width: 45%;
-    height: 75px;
-}
-
-button {
-    width: 25%
-}
-
-@media print {
-    body {
-        font-family: 'Times New Roman', Times, serif;
-    }
-
-    body>div>div:nth-of-type(2) {
-        visibility: hidden;
-    }
-
-    /* <--> */
-    body>div>div:nth-of-type(1)>div:nth-of-type(1) {
-        border-radius: 0px;
-    }
-    
-    /* <--> */
-    body>div>div:nth-of-type(1)>div:nth-of-type(2) {
-        border-radius: 0px;
-    }
+body>div>div:nth-of-type(2)>div>textarea {
+	width: 50%;
+	height: 125px;
 }
