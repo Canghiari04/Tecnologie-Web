@@ -1,26 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementsByTagName("button")[0].addEventListener("click", function() {
-        (document.getElementById("importo").value == "") ? (alert("Inserisci prima un importo!")) : (calculate(document.getElementById("importo").value, document.getElementById("valuta-partenza").value, document.getElementById("valuta-destinazione").value))
-    })
-})
+	document.getElementById("span-risultato").innerHTML = "";
 
-function calculate(importo, valutaPartenza, valutaDestinazione) {
-    document.getElementById("risultato").style.visibility = "visible";
-    document.getElementById("risultato").innerHTML = "";
-
-    if(valutaPartenza == valutaDestinazione) {
-        var textNode = document.createTextNode(`Risultato: ${importo}`);
-
-        document.getElementById("risultato").appendChild(textNode);
-    } else if(valutaDestinazione == "EUR" && document.getElementById("tasso-eur").value != "") {   
-        var importoConvertito = importo * document.getElementById("tasso-eur").value;
-        var textNode = document.createTextNode(`Risultato: ${importoConvertito}`);
-
-        document.getElementById("risultato").appendChild(textNode);
-    } else if(valutaDestinazione == "USD" && document.getElementById("tasso-usd").value != "") {
-        var importoConvertito = importo * document.getElementById("tasso-usd").value;
-        var textNode = document.createTextNode(`Risultato: ${importoConvertito}`);
-
-        document.getElementById("risultato").appendChild(textNode);
-    }
-}
+	document.getElementById("button-converti").addEventListener("click", function() {
+		var valore = document.getElementById("input-valore").value;
+		
+		if(valore == "") {
+			document.getElementById("span-risultato").innerHTML = "Inserisci l'importo da convertire!"
+		} else {
+			var valuta_destinazione = document.getElementById("select-destinazione").value.toLowerCase();
+			var tasso_conversione = document.getElementById(`tasso-cambio-${valuta_destinazione}`).value;
+			
+			if(tasso_conversione == "") {
+				document.getElementById("span-risultato").innerHTML = `Inserisci il tasso di cambio per la valuta ${valuta_destinazione.toUpperCase()}!`;
+			} else {			
+				var conversione = valore * tasso_conversione;
+				document.getElementById("span-risultato").innerHTML = conversione;
+			}
+		}
+	});
+});

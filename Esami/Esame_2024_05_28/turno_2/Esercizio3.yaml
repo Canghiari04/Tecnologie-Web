@@ -1,105 +1,108 @@
 swagger: "2.0"
-info: 
-  title: "Esercizio 3 Esame 28/05/2024"
-  description: "API per la gestione di stabilimenti balneari"
+info:
+  title: "Esercizio 3 Esame 28/05/2024 turno 2"
+  description: "API per la gestione di una spiaggia"
   version: 1.0.0
 paths:
-  /stabilimenti/{idStabilimento}/ombrelloni:
+  /spiaggia/stabilimenti/{idStabilimento}/ombrelloni/:
     get:
-      description: "Get di tutti gli ombrelloni che possono ospitare animali"
-      operationId: getOmbrelloniByAnimali
+      description: "Get di tutti gli ombrelloni che possano ospitare animali"
+      operationId: getOmbrelloniWithAnimali
       parameters:
         - in: path
           required: true
           name: idStabilimento
           type: integer
-          format:  int32
+          format: int32
         - in: query
           required: true
-          name: animali
+          name: animaliDomestici
           type: boolean
       responses:
-        '200': 
+        "200":
           description: "Success"
           schema:
             type: array
-            items: 
-              type: object
+            items:  
               $ref: "#/definitions/Ombrellone"
-        '400':
+        "400":
           description: "Failed parametri in input non corretti"
-  /stabilimenti/{idStabilimento}/ombrelloni/{idOmbrellone}:
+  /spiaggia/stabilimenti/{idStabilimento}/ombrelloni/{numeroOmbrellone}:
     put:
-      description: "Update della superficie di un ombrellone"
-      operationId: updateSuperficieOmbrellone
+      description: "Update superficie di un ombrellone"
+      operationId: updateOmbrelloneSuperficie
       parameters:
         - in: path
           required: true
           name: idStabilimento
           type: integer
-          format:  int32
+          format: int32
         - in: path
           required: true
-          name: idOmbrellone
+          name: numeroOmbrellone
           type: integer
-          format:  int32
+          format: int32
         - in: body
           required: true
           name: nuovaSuperficie
-          schema: 
+          schema:
             type: integer
             format: int32
-            example: 6
+            example: 7
       responses:
-        '200': 
+        "200":
           description: "Success"
-        '400':
+        "400":
           description: "Failed parametri in input non corretti"
-    delete:
-      description: "Delete di un ombrellone"
-      operationId: deleteOmbrellone
+    delete: 
+      description: "Delete di un ombrellone da uno stabilimento"
+      operationId: deleteOmbrelloneFromStabilimento
       parameters:
         - in: path
           required: true
           name: idStabilimento
           type: integer
-          format:  int32
+          format: int32
         - in: path
           required: true
-          name: idOmbrellone
+          name: numeroOmbrellone
           type: integer
-          format:  int32
+          format: int32
       responses:
-        '200': 
+        "200":
           description: "Success"
-        '400':
+        "400":
           description: "Failed parametri in input non corretti"
 definitions:
   Stabilimento:
     type: object
     required:
-      - idStabilimento
-      - nomeStabilimento
+      - id
+      - nome
+      - ombrelloni
     properties:
-      idStabilimento:
+      id:
         type: integer
         format: int32
         example: 256
-      nomeStabilimento:
+      nome:
         type: string
-        example: "Dune Beach"
+        example: "Le Dune Beach"
+      ombrelloni:
+        type: array
+        items:
+          $ref: "#/definitions/Ombrellone"
   Ombrellone:
     type: object
     required: 
-      - idOmbrellone
+      - numero
       - superficie
       - animali
     properties: 
-      idOmbrellone:
+      numero:
         type: integer
         format: int32
-        minimum: 1
-        example: 7
+        example: 58
       superficie:
         type: integer
         format: int32
