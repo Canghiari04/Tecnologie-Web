@@ -1,68 +1,68 @@
-swagger: '2.0'
+swagger: "2.0"
 info: 
-  title: 'Esercizio 1 Esame 2021/07/16'
-  description: 'API per la gestione di una palestra'
+  title: "Esercizio 1 Esame 2021/07/16"
+  description: "API per la gestione di una palestra"
   version: 1.0.0
 paths:
   /circuito/palestre/:
     get:
-      summary: 'Get di tutte le palestre aventi una certa capienza'
-      operationId: 'getGymsByNumber'
+      summary: "Get di tutte le palestre aventi una certa capienza"
+      operationId: "getGymsByNumber"
       parameters:
         - in: query
           required: true
           name: capienza
           type: integer
       responses:
-        '200':
-          description: 'Success palestre con certa capienza individuate'
+        "200":
+          description: "Success palestre con certa capienza individuate"
           schema:
             type: array
             items:
-              $ref: '#/definitions/Palestra'
-        '400':
-          description: 'Failed nessuna palestra corrisponde alla richiesta'
-  /circuito/palestre/{nomePalestra}/:
+              $ref: "#/definitions/Palestra"
+        "400":
+          description: "Failed nessuna palestra corrisponde alla richiesta"
+  /circuito/palestre/{nomePalestra}:
     post:
-      summary: 'Add di attivita riferite ad una palestra'
-      operationId: 'addActivityToGym'
+      summary: "Add di attivita riferite ad una palestra"
+      operationId: "addActivityToGym"
       parameters: 
         - in: path
           required: true
-          name: 'nomePalestra'
+          name: "nomePalestra"
           type: string
         - in: body 
           required: true
-          name: 'activityToAdd'
+          name: "activityToAdd"
           schema: 
-            $ref: '#/definitions/Attivita' 
+            $ref: "#/definitions/Attivita" 
       responses:  
-        '200':  
-          description: 'Success attività aggiunta alla palestra'    
+        "200":  
+          description: "Success attività aggiunta alla palestra"    
           schema: 
             items:  
-              $ref: '#/definitions/Attivita'
-        '400':
-          description: 'Failed attività non aggiunta alla palestra'
+              $ref: "#/definitions/Attivita"
+        "400":
+          description: "Failed attività non aggiunta alla palestra"
   /circuito/palestre/{nomepalestra}/attivitas/{nomeAttivita}:
     delete:
-      summary: 'Delete di attivita riferite ad una palestra'
-      operationId: 'deleteActivityFromGym'
+      summary: "Delete di attivita riferite ad una palestra"
+      operationId: "deleteActivityFromGym"
       parameters: 
         - in: path
           required: true
-          name: 'nomePalestra'
+          name: "nomePalestra"
           type: string
         - in: path
           required: true
-          name: 'nomeAttivita'
+          name: "nomeAttivita"
           type: string
-          description: 'Nome attivita da cancellare dalla palestra'
+          description: "Nome attivita da cancellare dalla palestra"
       responses:  
-        '200':  
-          description: 'Success attività aggiunta alla palestra'    
-        '400':
-          description: 'Failed attività non aggiunta alla palestra'
+        "200":  
+          description: "Success attività aggiunta alla palestra"    
+        "400":
+          description: "Failed attività non aggiunta alla palestra"
 definitions:
   Palestra:
     type: object
@@ -72,7 +72,7 @@ definitions:
     properties:
       nomePalestra:
         type: string
-        example: 'FitnessBo'
+        example: "FitnessBo"
       capienzaPalestra:
         type: integer
         format: int64
@@ -85,7 +85,7 @@ definitions:
     properties: 
       nomeAttivita:
         type: string
-        example: 'Crossfit'
+        example: "Crossfit"
       descrizioneAttivita:
         type: string
-        example: 'Allenamento per tutto il corpo'
+        example: "Allenamento per tutto il corpo"
