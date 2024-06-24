@@ -16,7 +16,7 @@ paths:
             - "Animazione"
             - "Avventura"
             - "Commedia"
-            - "Azione"
+            - "Horror"
             - "Documentario"
         - name: dataPubblicazione
           required: true
@@ -32,7 +32,7 @@ paths:
               $ref: "#/definitions/Serie"
         '400':
           description: "Failed nessuna serie TV risponde alle richieste"
-  /serie/{idSerie}/:
+  /serie/{idSerie}:
     post:
       description: "Post di un episodio all'interno di una serie TV"
       operationId: "addEpisodioToSerie"
@@ -56,7 +56,7 @@ paths:
             $ref: "#/definitions/Episodio"
         '400':  
           description: "Failed episodio non aggiunto alla serie"
-  /serie/{idSerie}/episodi/{idEpisodio}/:
+  /serie/{idSerie}/episodi/{idEpisodio}:
     put:
       description: "Put di un nuovo titolo relativo ad un episodio specifico"
       operationId: "updateTitoloEpisodio"
@@ -105,7 +105,7 @@ definitions:
       dataPubblicazione:
         type: string
         format: date
-        example: "16/03/2020"
+        example: "2020-03-16"
       episodi:
         type: array
         items:
@@ -116,7 +116,7 @@ definitions:
           - "Animazione"
           - "Avventura"
           - "Commedia"
-          - "Azione"
+          - "Horror"
           - "Documentario"
         example: "Documentario"          
   Episodio:
