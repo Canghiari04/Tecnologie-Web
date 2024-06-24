@@ -1,45 +1,45 @@
 swagger: "2.0"
-info: 
-  title: "Esercizio 3"
-  description: "API per la gestione di una collezione di serie televesive"
+info:
+  title: "Esercizio 3 Simulazione di Esame"
+  description: "API per la gestione di una collezione di serie televisive"
   version: 1.0.0
 paths:
-  /serie/:
-    get:
-      description: "Get di tutte le serie TV di un certo genere e pubblicate ad una certa data"
-      operationId: getSerieByGenereAndData
+  /collezione/series/:
+    get:  
+      description: "Get di tutte le serie di un certo genere e pubblicate ad una certa data"
+      operationId: getSerieFromGenereAndDataPubblicazione
       parameters:
         - in: query
           required: true
-          name: genereSerie
+          name: genere
           type: string
           enum: 
             - "Animazione"
             - "Avventura"
-            - "Azione"
             - "Commedia"
+            - "Horror"
             - "Documentario"
         - in: query
           required: true
-          name: dataPubblicazioneSerie
+          name: dataPubblicazione
           type: string
           format: date
       responses:
-        '200':
-          description: "Success serie TV inviduate"
+        "200":
+          description: "Success"
           schema:
             type: array
-            items:
-              $ref: "#/definitions/Episodio"
-        '400':
-          description: "Failed parametri di input non corretti"
-  /serie/{idSerie}/episodi/:
+            items:  
+              $ref: "#/definitions/Serie"
+        "400":
+          description: "Failed parametri in input non corretti"
+  /collezione/series/{idSerie}:
     post:
       description: "Add di un episodio ad una serie"
-      operationId: addEpisodioToSerie
-      parameters: 
+      operationId: addEpisodio
+      parameters:
         - in: path
-          required: true  
+          required: true
           name: idSerie
           type: integer
           format: int32
@@ -49,82 +49,84 @@ paths:
           schema: 
             type: object
             $ref: "#/definitions/Episodio"
-      responses:  
-        '200':
-          description: "Success episodio aggiunto"
-          schema: 
-            type: object
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            type: object 
             $ref: "#/definitions/Episodio"
-        '400':
+        "400":
           description: "Failed parametri in input non corretti"
-  /serie/{idSerie}/episodi/{numeroEpisodio}/:
+  /collezione/series/{idSerie}/episodi/{numeroEpisodio}:
     put:
-      description: "Update del titolo di un episodio"
+      description: "Uodate titolo di un episodio di una serie"
       operationId: updateTitoloEpisodio
-      parameters: 
+      parameters:
         - in: path
-          required: true  
+          required: true
           name: idSerie
           type: integer
           format: int32
         - in: path
-          required: true  
+          required: true
           name: numeroEpisodio
           type: integer
           format: int32
-        - in: body 
+        - in: body
           required: true
           name: nuovoTitolo
           schema: 
-            type: object
-            properties: 
-              titolo:
-                type: string
-                example: "La pace"
-      responses:    
-        '200':  
-          description: "Success titolo del test aggiornato"
-        '400':
-          description: "Failed parametri in input non corretti"
+            type: string
+            example: "La nuova scoperta"
+      responses:
+        "200":
+          description: "Success"
+        "400":
+          description: "Failed parametri in input non corretti"     
 definitions:
-  Serie TV:
+  Serie:
     type: object
     required: 
       - id
-      - titolo
+      - titolo 
       - dataPubblicazione
+      - episodi
       - genere
     properties:
       id: 
         type: integer
         format: int32
-        example: 001
+        example: 27
       titolo:
         type: string
         example: "Stranger Things"
       dataPubblicazione:
         type: string
         format: date
-        example: "01/01/2021"
+        example: "2024-06-07"
+      episodi:
+        type: array
+        items:
+          $ref: "#/definitions/Episodio"
       genere:
         type: string
-        enum:
-          - "Animazione"
-          - "Avventura"
-          - "Azione"
-          - "Commedia"
-          - "Documentario"
+        enum: 
+         - "Animazione"
+         - "Avventura"
+         - "Commedia"
+         - "Horror"
+         - "Documentario"
+        example: "Horror"
   Episodio:
-    type: object  
+    type: object
     required: 
       - numero
-      - titolo
-      - genere
-    properties: 
-      numero:
+      - titolo 
+    properties:
+      numero: 
         type: integer
         format: int32
-        example: 11
-      titolo: 
+        example: 1
+      titolo:
         type: string
-        example: "Lo scontro"
+        example: "La trappola per topi"
