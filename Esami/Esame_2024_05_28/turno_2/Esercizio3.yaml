@@ -108,5 +108,5 @@ definitions:
     format: int32
     example: 5
    animali:
-    type: booleam
+    type: boolean
     example: true
