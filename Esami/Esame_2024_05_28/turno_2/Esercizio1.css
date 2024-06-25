@@ -1,85 +1,105 @@
 body {
 	width: 100vw;
-	margin: 0;
 	padding: 0;
+	margin: 0;
 	font-family: sans-serif;
-	overflow-x: hidden;
 }
 
 body>div {
 	width: 100%;
-	margin: 1rem;
 }
 
 body>div>nav {
 	display: flex;
 	width: 80%;
+	padding: 2rem;
 }
 
 body>div>nav>span {
-	padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+	padding: 0.5rem 1rem 0.5rem 1rem;
 	font-weight: bold;
-	border-bottom: 3px solid lightgrey;
+	border-bottom: 2px solid lightgrey;
 }
 
 body>div>nav>span:hover {
-	border-bottom: 3px solid blue;
+	border-bottom: 2px solid blue;
 }
 
 body>div>div {
-	display: grid;
-	grid-template-columns: 10% 65% 25%;
+	display: flex;
+	width: 100%;
 }
 
 body>div>div>div:nth-of-type(1) {
 	display: flex;
 	flex-direction: column;
-	padding: 1rem;
+	width: 15%;
+}
+
+body>div>div>div:nth-of-type(1)>span {
+	width: 50%;
+	margin: auto;
 }
 
 body>div>div>div:nth-of-type(1)>span>img {
 	width: 100%;
 }
 
-body>div>div>div:nth-of-type(1)>span:hover {
-	border: 2px solid black;
-}
-
 body>div>div>div:nth-of-type(1)>span>img:hover {
-	filter: brightness(0.75);	
+	opacity: 0.5;
 }
 
 body>div>div>div:nth-of-type(2) {
-	width: 100%;
-	text-align: center;
+	width: 65%;
 }
 
 body>div>div>div:nth-of-type(2)>img {
-	width: 75%;
+	width: 100%;
+}
+
+body>div>div>div:nth-of-type(3) {
+	width: 25%;
 }
 
 body>div>div>div:nth-of-type(3)>p {
 	display: flex;
 	flex-direction: column;
-	width: 75%;
-	gap: 0.75rem;
+	padding-left: 2rem;
+	gap: 1rem;
 }
 
 body>div>div>div:nth-of-type(3)>p>span:nth-of-type(1) {
-	font-size: 14pt;
-	font-weight: bold;
-}
-
-body>div>div>div:nth-of-type(3)>p>span:nth-of-type(2) {
 	font-weight: bold;
 	color: orange;
 }
 
+body>div>div>div:nth-of-type(3)>p>span:nth-of-type(2) {
+	font-weight: bold;
+}
+
 body>div>div>div:nth-of-type(3)>p>span:nth-of-type(3) {
+	color: grey;
+}
+
+body>div>div>div:nth-of-type(3)>p>span:nth-of-type(4) {
 	display: flex;
 	font-weight: bold;
 }
 
-body>div>div>div:nth-of-type(3)>p>span:nth-of-type(3)>span {
-	font-size: 18pt;
+body>div>div>div:nth-of-type(3)>p>span:nth-of-type(4)>span {
+	font-size: 24pt;
+}
+
+body>div>div>div:nth-of-type(3)>p>span:nth-of-type(5) {
+	width: 75%;
+}
+
+@media print {
+	body>div {
+		background-color: grey !important;
+	}
+	
+	body>div>nav {
+		display: none !important;
+	}
 }

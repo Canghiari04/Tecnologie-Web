@@ -1,9 +1,13 @@
-function changeImage(valueImage) {
-	var main_image = document.getElementsByTagName("img")[5];
-	main_image.removeAttribute("src");
+function changeImage(numero_immagine) {
+	var div = document.getElementsByTagName("div")[3];
+	div.innerHTML = "";
+	
+	var img = document.createElement("img");
 	
 	var src = document.createAttribute("src");
-	src.value = `img/${valueImage}.png`;
+	src.value = `img/${numero_immagine}.png`;
 	
-	main_image.setAttributeNode(src);
+	img.setAttributeNode(src);
+	
+	div.appendChild(img);
 }

@@ -1,112 +1,112 @@
 swagger: "2.0"
 info:
-  title: "Esercizio 3 Esame 28/05/2024 turno 2"
-  description: "API per la gestione di una spiaggia"
-  version: 1.0.0
+ title: "Esercizio 3 Esame 28/05/2024"
+ description: "API per la gestione di una spiaggia"
+ version: 1.0.0
 paths:
-  /spiaggia/stabilimenti/{idStabilimento}/ombrelloni/:
-    get:
-      description: "Get di tutti gli ombrelloni che possano ospitare animali"
-      operationId: getOmbrelloniWithAnimali
-      parameters:
-        - in: path
-          required: true
-          name: idStabilimento
-          type: integer
-          format: int32
-        - in: query
-          required: true
-          name: animaliDomestici
-          type: boolean
-      responses:
-        "200":
-          description: "Success"
-          schema:
-            type: array
-            items:  
-              $ref: "#/definitions/Ombrellone"
-        "400":
-          description: "Failed parametri in input non corretti"
-  /spiaggia/stabilimenti/{idStabilimento}/ombrelloni/{numeroOmbrellone}:
-    put:
-      description: "Update superficie di un ombrellone"
-      operationId: updateOmbrelloneSuperficie
-      parameters:
-        - in: path
-          required: true
-          name: idStabilimento
-          type: integer
-          format: int32
-        - in: path
-          required: true
-          name: numeroOmbrellone
-          type: integer
-          format: int32
-        - in: body
-          required: true
-          name: nuovaSuperficie
-          schema:
-            type: integer
-            format: int32
-            example: 7
-      responses:
-        "200":
-          description: "Success"
-        "400":
-          description: "Failed parametri in input non corretti"
-    delete: 
-      description: "Delete di un ombrellone da uno stabilimento"
-      operationId: deleteOmbrelloneFromStabilimento
-      parameters:
-        - in: path
-          required: true
-          name: idStabilimento
-          type: integer
-          format: int32
-        - in: path
-          required: true
-          name: numeroOmbrellone
-          type: integer
-          format: int32
-      responses:
-        "200":
-          description: "Success"
-        "400":
-          description: "Failed parametri in input non corretti"
+ /spiaggia/stabilimenti/{numeroStabilimento}/ombrelloni/:
+  get:
+   description: "Get di tutti gli ombrelloni che accettino animali"
+   operationId: getOmbrelloni
+   parameters:
+    - in: path
+      required: true
+      name: numeroStabilimento
+      type: integer
+      format: int32
+    - in: query
+      required: true
+      name: animaliRichiesti
+      type: boolean
+   responses:
+    "200":
+     description: "Success"
+     schema:
+      type: array
+      items:
+       $ref: "#/definitions/Ombrellone"
+    "400":
+     description: "Failed parametri in input non corretti"
+ /spiaggia/stabilimenti/{numeroStabilimento}/ombrelloni/{numeroOmbrellone}:
+  put:
+   description: "Update superficie di un ombrellone a disposizione"
+   operationId: updateSuperficie
+   parameters:
+    - in: path
+      required: true
+      name: numeroStabilimento
+      type: integer
+      format: int32
+    - in: path
+      required: true
+      name: numeroOmbrellone
+      type: integer
+      format: int32
+    - in: body
+      required: true
+      name: nuovaSuperficie
+      schema: 
+       type: integer
+       format: int32
+       example: 7
+   responses:
+    "200":
+     description: "Success"
+    "400":
+     description: "Failed parametri in input non corretti"
+  delete:
+   description: "Delete di un ombrellone relativo ad uno stabilimento"
+   operationId: deleteOmbrelloneFromStabilimento
+   parameters:
+    - in: path
+      required: true
+      name: numeroStabilimento
+      type: integer
+      format: int32
+    - in: path
+      required: true
+      name: numeroOmbrellone
+      type: integer
+      format: int32
+   responses:
+    "200":
+     description: "Success"
+    "400":
+     description: "Failed parametri in input non corretti"
 definitions:
-  Stabilimento:
+ Stabilimento:
+  type: object
+  required:
+   - numero
+   - nome
+   - ombrelloni
+  properties:
+   numero:
+    type: integer
+    format: int32
+    example: 256
+   nome:
+    type: string
+    example: "Le Dune Beach"
+   ombrelloni:
     type: object
-    required:
-      - id
-      - nome
-      - ombrelloni
-    properties:
-      id:
-        type: integer
-        format: int32
-        example: 256
-      nome:
-        type: string
-        example: "Le Dune Beach"
-      ombrelloni:
-        type: array
-        items:
-          $ref: "#/definitions/Ombrellone"
-  Ombrellone:
-    type: object
-    required: 
-      - numero
-      - superficie
-      - animali
-    properties: 
-      numero:
-        type: integer
-        format: int32
-        example: 58
-      superficie:
-        type: integer
-        format: int32
-        example: 5
-      animali:
-        type: boolean
-        example: true
+    $ref: "#/definitions/Ombrellone"
+ Ombrellone:
+  type: object
+  required:
+   - numero
+   - superficie
+   - animali
+  properties:
+   numero:
+    type: integer
+    format: int32
+    example: 1
+    minimum: 1
+   superficie:
+    type: integer
+    format: int32
+    example: 5
+   animali:
+    type: booleam
+    example: true
