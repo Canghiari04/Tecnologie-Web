@@ -1,115 +1,119 @@
 swagger: "2.0"
 info:
-  title: "Esercizio 3 Esame 28/05/2024"
-  description: "API per la gestione del Giro d'Italia"
-  version: "1.0.0"
+ title: "Esercizio 3 Esame 28/05/2024"
+ description: "API per la gestione del Giro d'Italia"
+ version: 1.0.0
 paths:
-  /edizione/{annoEdizione}/tappe/:
-    get:
-      description: "Elenco di tutte le tappe di un'edizione che abbiano una certa lunghezza"
-      operationId: getTappeFromEdizioneAndLunghezza
-      parameters:
-        - in: path
-          required: true
-          name: annoEdizione
-          type: integer
-          format: int32
-        - in: query
-          required: true
-          name: maxLunghezza
-          type: integer
-          format: int32
-      responses:
-        200:
-          description: "Success"
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Tappa"
-        400:
-          description: "Failed parametri in input non corretti"
-    post:
-      description: "Aggiungere una tappa ad un'edizione"
-      operationId: addTappaEdizione
-      parameters:
-        - in: path
-          required: true
-          name: annoEdizione
-          type: integer
-          format: int32
-        - in: body
-          required: true
-          name: nuovaTappa
-          schema:
-            $ref: "#/definitions/Tappa"
-      responses:
-        200:
-          description: "Success"
-          schema:
-            $ref: "#/definitions/Tappa"
-        400:
-          description: "Failed parametri in input non corretti"
-  /edizione/{annoEdizione}:
-    put:
-      description: "Aggiornare la data fine di un'edizione"
-      operationId: updateDataFineEdizione
-      parameters:
-        - in: path
-          required: true
-          name: annoEdizione
-          type: integer
-          format: int32
-        - in: body
-          required: true
-          name: nuovaDataFine
-          schema:
-            type: string
-            format: date
-            example: "2024-06-30"
-      responses:
-        200:
-          description: "Success"
-        400:
-          description: "Failed parametri in input non corretti"
+ /giro/edizione/{annoEdizione}/tappe/:
+  get:
+   description: "Get di tutte le tappe di un'edizione avente una certa lunghezza"
+   operationId: getTappeFromEdizione
+   parameters:
+    - in: path
+      required: true
+      name: annoEdizione
+      type: integer
+      format: int32
+    - in: query
+      required: true
+      name: lunghezzaTappa
+      type: integer
+      format: int32
+   responses:
+    "200":
+     description: "Success"
+     schema:
+      type: array
+      items:
+       $ref: "#/definitions/Tappa"
+    "400": 
+      description: "Failed parametri in input non corretti"
+  post:
+   description: "Add di una tappa ad un'edizione"
+   operationId: addTappaAtEdizione
+   parameters:
+    - in: path
+      required: true
+      name: annoEdizione
+      type: integer
+      format: int32
+    - in: body
+      required: true
+      name: nuovaTappa
+      schema:
+       type: object
+       $ref: "#/definitions/Tappa"
+   responses:
+    "200":
+     description: "Success"
+     schema:
+      type: array
+      items:
+       $ref: "#/definitions/Tappa"
+    "400": 
+      description: "Failed parametri in input non corretti"
+ /giro/edizione/{annoEdizione}:
+  put: 
+   description: "Update data fine di un'edizione"
+   operationId: updateDataFineEdizione
+   parameters:
+    - in: path
+      required: true
+      name: annoEdizione
+      type: integer
+      format: int32
+    - in: body
+      required: true
+      name: nuovaDataFine
+      schema:
+       type: string
+       format: date
+       example: "2024-06-30"
+   responses:
+    "200":
+     description: "Success"
+    "400": 
+      description: "Failed parametri in input non corretti"
 definitions:
-  Edizione:
-    type: object
-    required:
-      - anno
-      - dataInizio
-      - dataFine
-      - listaTappe
-    properties:
-      anno:
-        type: integer
-        format: int32
-        example: 2024
-      dataInizio:
-        type: string
-        format: date
-        example: "2024-05-29"
-      dataFine:
-        type: string
-        format: date
-        example: "2024-06-29"
-      listaTappe:
-        type: array
-        items:
-          $ref: "#/definitions/Tappa"
-  Tappa:
-    type: object
-    required:
-      - id
-      - nome
-      - lunghezza
-    properties:
-      id: 
-        type: integer
-        format: int32
-        example: 1
-      nome: 
-        type: string
-        example: "Rimini - Firenze"
-      lunghezza:
-        type: integer
-        example: 201
+ Edizione:
+  type: object
+  required:
+   - anno
+   - dataInizio
+   - dataFine
+   - tappe
+  properties:
+   anno:
+    type: integer
+    format: int32
+    example: 2024
+   dataInizio:
+    type: string
+    format: date
+    example: "2024-05-29"
+   dataFine:
+    type: string
+    format: date
+    example: "2024-06-29"
+   tappe:
+    type: array
+    items:
+     $ref: "#/definitions/Tappa"
+ Tappa:
+  type: object
+  required:
+   - numero
+   - nome
+   - lunghezza
+  properties:
+   numero:
+    type: integer
+    format: int32
+    example: 7
+   nome:
+    type: string
+    example: "Rimini-Bologna"
+   lunghezza:
+    type: integer
+    format: int32
+    example: 201

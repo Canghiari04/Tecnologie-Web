@@ -1,63 +1,67 @@
 document.addEventListener("DOMContentLoaded", function() {
 	document.getElementById("button-aggiungi").addEventListener("click", function() {
-		var elemento = document.getElementById("input-elemento").value;	
-		
-		var testo = document.createTextNode(elemento);
-		
-		var input = document.createElement("input");
-		
-		var type = document.createAttribute("type");
-		type.value = "checkbox";
-		var id = document.createAttribute("id");
-		id.value = elemento;
-		var f = document.createAttribute("onchange");
-		f.value = "changeTextDecoration(id)";
-		
-		input.setAttributeNode(type);
-		input.setAttributeNode(id);
-		input.setAttributeNode(f);
+		var text = document.getElementById("input-text").value;
 		
 		var span = document.createElement("span");
 		
-		var id_span = document.createAttribute("id");
-		id_span.value = elemento;
+		var id = document.createAttribute("id");
+		id.value = text;
 		
-		span.setAttributeNode(id_span);
+		span.setAttributeNode(id);
 		
-		span.appendChild(input);
-		span.appendChild(testo);
+		var span_text = document.createElement("span");
+		span_text.innerHTML = text;
 		
-		document.getElementById("p-checkbox").appendChild(span);
+		var checkbox = document.createElement("input");
+		
+		var type = document.createAttribute("type");
+		type.value = "checkbox";
+		
+		var id_checkbox = document.createAttribute("id");
+		id_checkbox.value = text;
+		
+		var method = document.createAttribute("onchange");
+		method.value = "checkCheckbox(id)";
+		
+		checkbox.setAttributeNode(type);
+		checkbox.setAttributeNode(id_checkbox);
+		checkbox.setAttributeNode(method);
+		
+		span.appendChild(checkbox);
+		span.appendChild(span_text);
+		
+		document.getElementById("div-checkbox").appendChild(span);
 	});
-
+	
 	document.getElementById("button-elimina").addEventListener("click", function() {
-		var checkbox_checked = new Array();
+		var array = new Array();
 		
+		var checkboxes = document.getElementsByTagName("input");
 		var spans = document.getElementsByTagName("span");
-		var checkBoxes = document.getElementsByTagName("input")
 		
-		for(let i = 0; i < spans.length; i++) {
-			var checkbox = checkBoxes.namedItem(spans[i].id);
+		for(let i = 0; i < checkboxes.length; i++) {
+			var checkbox = checkboxes[i];
 			
-			if(checkbox.checked) {
-				var span = spans.namedItem(spans[i].id);
-				checkbox_checked.push(span);
+			if(checkbox.type == "checkbox" && checkbox.checked == true) {
+				var span = spans.namedItem(checkbox.id);
+				array.push(span);
 			}
+			
 		}
 		
-		for(var index in checkbox_checked) {		
-			document.getElementById("p-checkbox").removeChild(checkbox_checked[index]);
+		for(let index in array) {
+			document.getElementById("div-checkbox").removeChild(array[index]);
 		}
-	});
+		
+	});		
 });
 
-function changeTextDecoration(id) {
+function checkCheckbox(id) {
 	var spans = document.getElementsByTagName("span");
-	
 	var span = spans.namedItem(id);
 	
-	var style = document.createAttribute("style")
-	style.value = "text-decoration: line-through;";
+	var style = document.createAttribute("style");
+	style.value = "text-decoration: line-through;";	
 	
-	span.setAttributeNode(style);
+	span.setAttributeNode(style);	
 }
