@@ -1,27 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("textarea-to-count").disabled = false;
-    document.getElementById("textarea-to-count").value = "";
+	const caratteri = 300;
 
-    document.getElementById("textarea-to-count").addEventListener("input", function() {
-        var text = document.getElementById("textarea-to-count").value;
-        
-        var words = text.split(' ');
-        var lengthWords = words.length;
-        
-        if((300 - text.length) <= 0) {
-            document.getElementById("textarea-to-count").disabled = true;
-        } else {
-            document.getElementById("span-characters").innerHTML = text.length;
-            document.getElementById("span-words").innerHTML = lengthWords;
-            document.getElementById("span-last-words").innerHTML = 300 - text.length;
-        }
-    });
-
-    document.getElementById("button-reset").addEventListener("click", function() {
-        document.getElementById("textarea-to-count").disabled = false;
-        document.getElementById("textarea-to-count").value = "";
-        document.getElementById("span-characters").innerHTML = 0;
-        document.getElementById("span-words").innerHTML = 0;
-        document.getElementById("span-last-words").innerHTML = 300;
-    });
+	document.getElementById("textarea-input").addEventListener("input", function() {
+		var text = document.getElementById("textarea-input").value;
+		
+		document.getElementById("span-numero-caratteri").innerHTML = " " + text.length;	
+		
+		var tokens = text.split(' ');
+		(document.getElementById("span-numero-caratteri").innerHTML > 0) ? 
+			(document.getElementById("span-numero-parole").innerHTML = " " + tokens.length) : (document.getElementById("span-numero-parole").innerHTML = " " + 0)
+		
+		var differenza = caratteri - text.length;
+		if(differenza > 0) {
+			document.getElementById("span-caratteri-rimanenti").innerHTML = " " + differenza;
+		} else {
+			document.getElementById("textarea-input").disabled = true;
+			document.getElementById("span-caratteri-rimanenti").innerHTML = " " + differenza;
+			
+			alert("Limite massimo di caratteri raggiunto.");
+		}
+	});
 });
