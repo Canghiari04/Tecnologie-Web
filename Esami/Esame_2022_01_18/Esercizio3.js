@@ -1,145 +1,104 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("abruzzo").addEventListener("click", function() {
-        getCheckboxes(document.getElementById("abruzzo").innerHTML);
+	document.getElementById("span-calabria").addEventListener("click", function() {
+		var request = new XMLHttpRequest();
+		
+		request.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/holidays/index.php", true);
+		request.send();
 
-        document.getElementById("div-checkboxes").innerHTML = "";
-        document.getElementById("div-localities").innerHTML = "";
-    })
+		request.onload = () => {
+			if(request.status === 200) {
+				var tokens = JSON.parse(request.response);
+				buildCheckbox(tokens.region, tokens);
+				buildLocalita(tokens);
+			} else {
+				console.error("Errore durante la richiesta");
+			}
+		}
+	});
+});
 
-    document.getElementById("basilicata").addEventListener("click", function() {
-        getCheckboxes(document.getElementById("basilicata").innerHTML);
+function buildCheckbox(regione, tokens) {
+	document.getElementById("p-bandiera").innerHTML = `Confronta le Bandiere Blu in ${regione}:`;
 
-        document.getElementById("div-checkboxes").innerHTML = "";
-        document.getElementById("div-localities").innerHTML = "";
-    })
-
-    document.getElementById("calabria").addEventListener("click", function() {
-        getCheckboxes(document.getElementById("calabria").innerHTML);
-
-        document.getElementById("div-checkboxes").innerHTML = "";
-        document.getElementById("div-localities").innerHTML = "";
-    })
-
-    document.getElementById("campania").addEventListener("click", function() {
-        getCheckboxes(document.getElementById("campania").innerHTML);
-
-        document.getElementById("div-checkboxes").innerHTML = "";
-        document.getElementById("div-localities").innerHTML = "";
-    })
-
-    document.getElementById("emilia-romagna").addEventListener("click", function() {
-        getCheckboxes(document.getElementById("emilia-romagna").innerHTML);
-
-        document.getElementById("div-checkboxes").innerHTML = "";
-        document.getElementById("div-localities").innerHTML = "";
-    })
-})
-
-function getCheckboxes(value) {
-    var spanText = document.getElementById("span-region");
-    spanText.innerHTML = "Confronta le Bandiere Blu in " + value + ":";
-
-    var request = new XMLHttpRequest();
-    request.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/holidays/index.php", true);
-
-    request.onload = () => {
-        (request.status === 200) ? (createCheckbox(JSON.parse(request.response), value)) : (console.error("Errore nella richiesta."))
-    }
-
-    request.send();
+	for(var index in tokens) {
+		if(typeof(tokens[index]) == "object") {
+			var array = tokens[index];
+				
+			for(let i = 0; i < array.length; i++) {
+				var span = document.createElement("span");
+				
+				var checkbox = document.createElement("input");
+				
+				var type = document.createAttribute("type");
+				type.value = "checkbox";
+				
+				var id = document.createAttribute("id");
+				id.value = array[i].name;
+				
+				var method = document.createAttribute("onchange");
+				method.value = "changeLocalita(id)";
+				
+				checkbox.setAttributeNode(type);
+				checkbox.setAttributeNode(id);
+				checkbox.setAttributeNode(method);
+				
+				var textNode = document.createTextNode(array[i].name);
+				
+				span.appendChild(checkbox);
+				span.appendChild(textNode);
+				
+				document.getElementById("div-checkbox").appendChild(span);
+			}
+		}
+		
+	}	
 }
 
-function createCheckbox(tokens, value) {
-    for(index in tokens) {
-        var item = tokens[index];
-
-        if(typeof(item) == "object") {
-            var divCheckboxes = document.getElementById("div-checkboxes");
-
-            for(let i = 0; i <= item.length - 1; i++) {
-                var label = document.createElement("label"); 
-        
-                var input = document.createElement("input");
-        
-                var type = document.createAttribute("type");
-                type.value = "checkbox"; 
-        
-                var value = document.createAttribute("value");
-                value.value = item[i].name; 
-        
-                var click = document.createAttribute("onclick");
-                click.value = "getLocality(event)";
-                
-                input.setAttributeNode(type);
-                input.setAttributeNode(value);
-                input.setAttributeNode(click);
-                
-                var name = document.createTextNode(item[i].name);
-        
-                label.appendChild(input);
-                label.appendChild(name); 
-                divCheckboxes.appendChild(label);
-            }  
-        }
-    }
-}
-
-/* <--> */
-function getLocality(event) {
-    var request = new XMLHttpRequest();
-    request.open("GET", "http://diiorio.nws.cs.unibo.it/twe/api/holidays/index.php", true);
-
-    request.onload = () => {
-        (request.status === 200) ? (createLocality(JSON.parse(request.response), document.getElementById("div-localities"), event.target)) : (console.error("Errore nella richiesta."))
-    }
-
-    request.send();
-}
-
-function createLocality(tokens, divLocalities, locality) {
-    /* <--> */
-    if(divLocalities.childElementCount <= 1) {
-        for(index in tokens) {
-            var item = tokens[index];
-            
-            if(typeof(item) == "object") {
-                for(let i = 0; i <= item.length - 1; i++) {
-                    if(locality.value == item[i].name) {
-                        var div = document.createElement("div");
-                        
-                        var h2 = document.createElement("h2");
-                        h2.innerHTML = item[i].name;
-                    
-                        var p = document.createElement("p");
-                        var text = document.createTextNode(item[i].summary)
-                        
-                        var img = document.createElement("img");
-                        var src = document.createAttribute("src");
-
-                        /* <--> */
-                        src.value = `http://diiorio.nws.cs.unibo.it/twe/resources/1801/${item[i].photo}`;
-
-                        var a = document.createElement("a");
-                        var href = document.createAttribute("href");
-
-                        /* <--> */
-                        href.value = `/place/${item[i].id}/`;
-
-                        a.setAttributeNode(href);
-                        a.appendChild(text);
-                        
-                        img.setAttributeNode(src);
-                        
-                        p.appendChild(img);
-                        p.appendChild(a);
-                        
-                        div.appendChild(h2);
-                        div.appendChild(p);
-                        
-                        divLocalities.appendChild(div);
-                    }
-                }
-            }   
-        }
-    }
+function buildLocalita(tokens) {
+	for(var index in tokens) {
+		if(typeof(tokens[index]) == "object") {
+			var array = tokens[index];
+				
+			for(let i = 0; i < array.length - 2; i++) {
+				var div = document.createElement("div");
+				
+				var id = document.createAttribute("id");
+				id.value = array[i].name;
+				
+				div.setAttributeNode(id);
+				
+				var h1 = document.createElement("h1");
+				h1.innerHTML = array[i].name;
+				
+				var div_text = document.createElement("div");
+				
+				var a = document.createElement("a");
+				var href = document.createAttribute("href");
+				href.value = `/${array[i].id}/`;
+				a.setAttributeNode(href);
+				
+				var p = document.createElement("p");
+				
+				var img = document.createElement("img");
+				var src = document.createAttribute("src");
+				src.value = `http://diiorio.nws.cs.unibo.it/twe/resources/1801/${array[i].photo}`
+				img.setAttributeNode(src);
+				
+				var textNode = document.createTextNode(array[i].summary);
+				
+				p.appendChild(img);
+				p.appendChild(textNode);
+				
+				a.appendChild(p);
+				
+				div_text.appendChild(a);
+				
+				div.appendChild(h1);
+				div.appendChild(div_text);
+				
+				document.getElementById("div-localita").appendChild(div);
+			}
+		}
+		
+	}
 }

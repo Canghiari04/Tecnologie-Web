@@ -1,97 +1,82 @@
-body, html {
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
+body {
+	width: 100vw;
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
 }
 
-body>div{
-    position: relative;
-    width: 100%;
-    padding-top: 1rem;
-    margin-top: 1rem;
+body>div {
+	width: 100%;
 }
 
 body>div>nav {
-    text-align: center;
-    width: 75%;
-    height: 37.5px;
-    margin: auto;
+	text-align: center;
+	width: 80%;
+	padding: 1rem;
+	margin: auto;
 }
 
-body>div>nav>a {
-    padding: 1rem 2rem 1rem 2rem;
-    font-size: 14pt;
-    color: white;
-    background-color: lightgrey;
-    margin: 1rem;
-}
-
-body>div>nav>a:hover {
-    background-color: grey;
+body>div>nav>span {
+	padding: 1rem 2rem 1rem 2rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
+	font-weight: bold;
+	color: white;
+	background-color: grey;
 }
 
 body>div>div {
-    max-width: 75%;
-    max-height: 35%;
-    padding-top: 1rem;
-    padding: 2rem;
-    margin: auto;
-    border: 2px solid black;
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	padding-left: 1rem;
+	margin: auto;
+	border: 2px solid black;
 }
 
-body>div>div>span {
-    font-size: 16pt;
-    font-style: italic;
-}
-
-body>div>div>div:nth-of-type(1) {
-    display: flex;
-    margin-top: 1rem;
-    gap: 1rem;
+body>div>div>p {
+	font-size: 14pt;
+	font-style: italic;
 }
 
 body>div>div>div:nth-of-type(2) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    width: 100%;
-    height: 100%;
-    gap: 1rem;
+	display: flex;
+	width: 100%;
+	gap: 2rem;
 }
 
 body>div>div>div:nth-of-type(2)>div {
-    width: 100%;
-    height: 100%;
+	width: 50%;
+	padding: 1rem;
 }
 
-body>div>div>div:nth-of-type(2)>div>p {
-    text-align: justify;
-    padding: 2rem;
-    background-color: lightgrey;
+body>div>div>div:nth-of-type(2)>div>div {
+	padding: 1rem;
+	background-color: lightgrey;
 }
 
-body>div>div>div:nth-of-type(2)>div>p>a {
-    text-decoration: none !important;
-    color: black;
+body>div>div>div:nth-of-type(2)>div>div>a {
+	text-decoration: none !important;
+	color: black;
 }
 
-img {
-    float: right;
-    width: 15%;
-    height: 15%;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+body>div>div>div:nth-of-type(2)>div>div>a>p {
+	text-align: justify;
+	margin: 0;
 }
 
-footer {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-style: italic;
-    color: grey;
+body>div>div>div:nth-of-type(2)>div>div>a>p>img {
+	float: right;
 }
 
-footer>span {
-    margin-top: 1rem;
+body>div>div>span, body>div>div>footer {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 0.5rem;
+	font-style: italic;
+	color: grey;
+}
+
+body>div>div>footer>a {
+	color: blue;
 }
